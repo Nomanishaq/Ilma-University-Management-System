@@ -19,7 +19,7 @@ The University Management System (UMS) is a comprehensive web-based application 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/SohaibKhaliq/University-Management-System
+   git clone https://github.com/Nomanishaq/Ilma-University-Management-System
    cd style-and-schedule
 2. **Install dependencies:**
    ```bash
@@ -49,5 +49,5 @@ The University Management System (UMS) is a comprehensive web-based application 
    . Commit your changes and push to your forked repository.
    . Submit a pull request for review.
 10. **Credits**
-   . Developed by SohaibKhaliq
-   . For inquiries or support, contact [sohaibkhaliq510@gmail.com].
+   . Developed by Noman Ishaq
+   . For inquiries or support, contact [nomanishaq251@gmail.com].
