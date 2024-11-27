@@ -12,11 +12,23 @@
 */
 
 // Web Routes
+
+use App\Http\Controllers\Admin\QuestionBankController;
+use App\Http\Controllers\Admin\QuizController;
+use App\Models\Quiz;
+
 Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
+
+      // Home Route
+      Route::get('/', function () {
+        // Redirect to the student login page
+        return redirect()->route('student.login');
+    })->name('home');
+
     // Home Route
-    Route::get('/', 'HomeController@index')->name('home');
-    // Course Route
+    // Route::get('/', 'HomeController@index')->name('home');
+    // // Course Route
     Route::get('/course', 'CourseController@index')->name('course');
     Route::get('/course/{slug}', 'CourseController@show')->name('course.single');
     // Event Route
@@ -437,6 +449,10 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     Route::post('profile/changepass', 'ProfileController@changePass')->name('profile.changepass');
 
 
+    // Question Bank Route
+    Route::get('/questionbank', [QuestionBankController::class, 'index'])->name('questionbank.index');
+    Route::get('/addquestionbank/{id}', [QuestionBankController::class, 'create'])->name('questionbank.create');
+    Route::post('/quiz/store', [QuizController::class, 'store'])->name('quiz.store');
 
     // Front Web Routes
     Route::prefix('web')->namespace('Web')->group(function () {
@@ -455,6 +471,9 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
         Route::resource('social-setting', 'SocialSettingController');
         Route::resource('topbar-setting', 'TopbarSettingController');
     });
+
+
+
 });
 
 

@@ -17,8 +17,8 @@
         <!-- [ Main Content ] start -->
         <div class="row">
             <!-- [ bitcoin-wallet section ] start-->
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card bg-c-blue bitcoin-wallet">
+            <div class="col-sm-6 col-md-6 col-xl-4">
+                <div class="card bg-c-blue bitcoin-wallet rounded-4">
                     <div class="card-block">
                         <h5 class="text-white mb-2">{{ __('status_pending') }} {{ trans_choice('module_application', 2) }}</h5>
                         <h2 class="text-white mb-2 f-w-300">{{ $pending_applications->count() }}</h2>
@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card bg-c-blue bitcoin-wallet">
+            <div class="col-sm-6 col-md-6 col-xl-4">
+                <div class="card bg-c-blue bitcoin-wallet rounded-4">
                     <div class="card-block">
                         <h5 class="text-white mb-2"> {{ __('status_active') }} {{ trans_choice('module_student', 2) }}</h5>
                         <h2 class="text-white mb-2 f-w-300">{{ $active_students->count() }}</h2>
@@ -35,8 +35,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card bg-c-blue bitcoin-wallet">
+            <div class="col-sm-6 col-md-6 col-xl-4">
+                <div class="card bg-c-blue bitcoin-wallet rounded-4">
                     <div class="card-block">
                         <h5 class="text-white mb-2">{{ __('status_active') }} {{ trans_choice('module_staff', 2) }}</h5>
                         <h2 class="text-white mb-2 f-w-300">{{ $active_staffs->count() }}</h2>
@@ -44,8 +44,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card bg-c-blue bitcoin-wallet">
+            <div class="col-sm-6 col-md-6 col-xl-4">
+                <div class="card bg-c-blue bitcoin-wallet rounded-4">
                     <div class="card-block">
                         <h5 class="text-white mb-2">{{ __('field_total') }} {{ trans_choice('module_book', 2) }}</h5>
                         <h2 class="text-white mb-2 f-w-300">{{ $library_books->count() }}</h2>
@@ -55,112 +55,9 @@
             </div>
             <!-- [ bitcoin-wallet section ] end-->
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card theme-bg bitcoin-wallet">
-                    <div class="card-block">
-                        <h5 class="text-white mb-2">{{ __('field_daily') }} {{ trans_choice('module_visitor_log', 2) }}</h5>
-                        <h2 class="text-white mb-2 f-w-300">{{ $daily_visitors->count() }}</h2>
-                        <i class="fas fa-eye f-70 text-white"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card theme-bg bitcoin-wallet">
-                    <div class="card-block">
-                        <h5 class="text-white mb-2">{{ __('field_daily') }} {{ trans_choice('module_phone_log', 2) }}</h5>
-                        <h2 class="text-white mb-2 f-w-300">{{ $daily_phone_logs->count() }}</h2>
-                        <i class="fas fa-phone-volume f-70 text-white"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card theme-bg bitcoin-wallet">
-                    <div class="card-block">
-                        <h5 class="text-white mb-2">{{ __('field_daily') }} {{ trans_choice('module_enquiry', 2) }}</h5>
-                        <h2 class="text-white mb-2 f-w-300">{{ $daily_enqueries->count() }}</h2>
-                        <i class="fas fa-question f-70 text-white"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-xl-3">
-                <div class="card theme-bg bitcoin-wallet">
-                    <div class="card-block">
-                        <h5 class="text-white mb-2">{{ __('field_daily') }} {{ trans_choice('module_postal_exchange', 2) }}</h5>
-                        <h2 class="text-white mb-2 f-w-300">{{ $daily_postals->count() }}</h2>
-                        <i class="fas fa-exchange-alt f-70 text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+ 
+    
 
-        @canany(['fees-student-report', 'payroll-report'])
-        <div class="row">
-            <div class="col-12 col-md-12 col-xl-12">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="lineChart" height="100px"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endcanany
-
-        <div class="row">
-            @canany(['fees-student-report'])
-            <div class="col-12 col-md-6 col-xl-6 mt-5">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="pieChart" height="220px"></canvas>
-                    </div>
-                </div>
-            </div>
-            @endcanany
-            @canany(['payroll-report'])
-            <div class="col-12 col-md-6 col-xl-6 mt-5">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="line-chartcanvas" height="250px"></canvas>
-                    </div>
-                </div>
-            </div>
-            @endcanany
-        </div>
-
-        <div class="clear-fix mt-5"></div>
-        <div class="row">
-            <div class="col-xl-4 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="student"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="feesType"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="inventory"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-12 col-md-12">
-                <div class="card">
-                    <div class="card-block">
-                        <canvas id="front-desk-line"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- [ Main Content ] end -->
     </div>
 </div>

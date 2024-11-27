@@ -12,9 +12,9 @@
                     <div class="card-header">
                         <h5>{{ $title }}</h5>
 
-                        @can($access.'-import')
+                        <!-- @can($access.'-import')
                         <a href="{{ route($route.'.import') }}" class="btn btn-dark btn-sm float-right"><i class="fas fa-upload"></i> {{ __('btn_import') }}</a>
-                        @endcan
+                        @endcan -->
                     </div>
                     <div class="card-block">
                         <form class="needs-validation" novalidate method="get" action="{{ route($route.'.index') }}">

@@ -3,13 +3,13 @@
 @section('content')
 
 <!-- Start Content-->
-<div class="card">
+<div class="card rounded-4">
     <div class="card-body text-center">
-        <div class="mb-4">
-            <i class="feather icon-unlock auth-icon"></i>
-        </div>
-        <h3 class="mb-4">{{ __('auth_login_title') }}</h3>
-
+     
+       <div class="pt-4 pb-5">    
+           <img src="{{ asset('uploads/setting/'.$setting->logo_path) }}" class="img-fluid" alt="logo">
+       </div>
+    
         <!-- Form Start -->
         <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -40,7 +40,7 @@
                     </label>
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary shadow-2 mb-4" name="submit" value="{{ __('auth_login') }}">
+            <input type="submit" class="btn w-75 rounded-4 btn-info shadow-2 mb-4 border-0" style="background-color: #a05052;" name="submit" value="{{ __('auth_login') }}">
         </form>
         <!-- Form End -->
 

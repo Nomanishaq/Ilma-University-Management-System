@@ -61,10 +61,8 @@
         <tbody>
         	<tr>
         		<td class="temp-title">
-                  <div class="inner">
-                    <h2>{{ $print->title }}</h2>
-
-                    <h4>{{ $print->subtitle }}</h4>
+                   <div class="inner">
+                    <img src="{{ asset('uploads/setting/'.$setting->logo_path) }}" alt="logo" height="20">
                   </div>
                 </td>
         	</tr>
@@ -122,7 +120,7 @@
             <tr>
                 <td class="temp-footer">
                   <div class="inner">
-                    <p>{!! $print->address !!}</p>
+                    <p>Sindh, Karachi</p>
                   </div>
                 </td>
             </tr>

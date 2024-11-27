@@ -19,9 +19,9 @@
 
                         <a href="{{ route($route.'.index') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i> {{ __('btn_refresh') }}</a>
 
-                        @can($access.'-import')
+                        <!-- @can($access.'-import')
                         <a href="{{ route($route.'.import') }}" class="btn btn-dark"><i class="fas fa-upload"></i> {{ __('btn_import') }}</a>
-                        @endcan
+                        @endcan -->
                     </div>
 
                     <div class="card-block">

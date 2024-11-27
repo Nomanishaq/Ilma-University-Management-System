@@ -29,23 +29,9 @@
     </head>
     <body>
 
-        <div class="auth-wrapper">
-
-            @if(isset($setting))
-            @if(is_file('uploads/setting/'.$setting->logo_path))
-            <a href="#" class="auth-logo">
-                <img src="{{ asset('uploads/setting/'.$setting->logo_path) }}" alt="logo">
-            </a>
-            @endif
-            @endif
-            
+        <div class="auth-wrapper">            
             <div class="auth-content">
-                <div class="auth-bg">
-                    <span class="r"></span>
-                    <span class="r s"></span>
-                    <span class="r s"></span>
-                    <span class="r"></span>
-                </div>
+               
 
                 <!-- Start Content-->
                 @yield('content')

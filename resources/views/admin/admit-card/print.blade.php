@@ -51,7 +51,7 @@
                 <td class="temp-logo">
                   <div class="inner">
                     @if(is_file('uploads/'.$path.'/'.$print->logo_left))
-                    <img src="{{ asset('uploads/'.$path.'/'.$print->logo_left) }}" alt="Logo">
+                    <img src="{{ asset('uploads/setting/'.$setting->logo_path) }}" alt="logo" style="max-width: 160px; margin-top: 20px;">
                     @endif
                   </div>
                 </td>

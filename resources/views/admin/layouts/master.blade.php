@@ -27,7 +27,7 @@
                 </a>
                 @endif
                 @endif
-                <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+                <!-- <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a> -->
             </div>
 
 
@@ -61,9 +61,15 @@
         </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
-                <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
                 <li>
-                    <h4 class="topbar-title">{{ $setting->title }}</h4>
+                    <h4 class="topbar-title">{{ $setting->title }} 
+                
+                    @if(Auth::user()->department_id == 1)
+                        <span>Admin Dashboard</span>
+                    @elseif(Auth::user()->department_id == 5)
+                        <span>Teacher Dashboard</span>
+                    @endif
+                </h4>
                 </li>
             </ul>
 
