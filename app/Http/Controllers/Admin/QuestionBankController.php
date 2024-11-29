@@ -129,6 +129,9 @@ class QuestionBankController extends Controller
     // Pass both the title and quizzes to the view
     return view('admin.questionbank.create', $data);
     }
+
+
+    
     //
 
 }

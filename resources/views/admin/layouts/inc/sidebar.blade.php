@@ -211,7 +211,6 @@
         @endcanany
 
 
-
         @canany(['exam-attendance', 'exam-marking', 'exam-result', 'subject-marking', 'subject-result', 'grade-view', 'grade-create', 'exam-type-view', 'exam-type-create', 'admit-card-view', 'admit-card-print', 'admit-card-download', 'admit-setting-view', 'result-contribution-view'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/exam*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
@@ -272,6 +271,31 @@
         </li>
         @endcanany
 
+
+        <li class="nav-item {{ Request::is('admin/questionbank*') ? 'active' : '' }}">
+            <a href="{{ route('admin.questionbank.index') }}" class="nav-link">
+                <span class="pcoded-micon"><i class="fas fa-user-edit"></i></span>
+                <span class="pcoded-mtext">Question Bank</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item pcoded-hasmenu {{ Request::is('admin/course-learning-outcome*') ? 'pcoded-trigger active' : '' }}">
+            <a href="#!" class="nav-link">
+                <span class="pcoded-micon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="pcoded-mtext">CLO or PLO</span>
+            </a>
+            <ul class="pcoded-submenu">
+               
+                <li class="{{ Request::is('admin/clo*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">CLO</a></li>
+                
+                <li class="{{ Request::is('admin/plo*') ? 'active' : '' }}"><a href="/files/plo.pdf" download="plo.pdf" class="">PLO</a></li>
+               
+            </ul>
+        </li>
+
+
+
         @canany(['assignment-create', 'assignment-view', 'assignment-marking', 'content-create', 'content-view', 'content-type-view', 'content-type-create'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/download*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
@@ -279,12 +303,6 @@
                 <span class="pcoded-mtext">{{ trans_choice('module_study_material', 2) }}</span>
             </a>
             <ul class="pcoded-submenu">
-
-             <li class="{{ Request::is('admin/download/assignment*') ? 'active' : '' }}"">
-                <a href="{{ route('admin.questionbank.index') }}" class="#">MCQS
-                </a>
-              </li>
-
                 @canany(['assignment-create', 'assignment-view', 'assignment-marking'])
                 <li class="{{ Request::is('admin/download/assignment*') ? 'active' : '' }}"><a href="{{ route('admin.assignment.index') }}" class="">{{ trans_choice('module_assignment', 1) }} {{ __('list') }}</a></li>
                 @endcanany
@@ -341,14 +359,6 @@
 
                 @canany(['staff-note-create', 'staff-note-view'])
                 <li class="{{ Request::is('admin/staff/staff-note*') ? 'active' : '' }}"><a href="{{ route('admin.staff-note.index') }}" class="">{{ trans_choice('module_staff_note', 2) }}</a></li>
-                @endcanany
-
-                @canany(['payroll-view', 'payroll-action', 'payroll-print'])
-                <li class="{{ Request::is('admin/staff/payroll') ? 'active' : '' }}"><a href="{{ route('admin.payroll.index') }}" class="">{{ trans_choice('module_payroll', 2) }}</a></li>
-                @endcanany
-
-                @canany(['payroll-report'])
-                <li class="{{ Request::is('admin/staff/payroll-report*') ? 'active' : '' }}"><a href="{{ route('admin.payroll.report') }}" class="">{{ trans_choice('module_payroll_report', 2) }}</a></li>
                 @endcanany
 
                 @canany(['staff-leave-manage-edit', 'staff-leave-manage-view'])

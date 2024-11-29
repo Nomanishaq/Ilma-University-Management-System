@@ -453,6 +453,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     Route::get('/questionbank', [QuestionBankController::class, 'index'])->name('questionbank.index');
     Route::get('/addquestionbank/{id}', [QuestionBankController::class, 'create'])->name('questionbank.create');
     Route::post('/quiz/store', [QuizController::class, 'store'])->name('quiz.store');
+    
 
     // Front Web Routes
     Route::prefix('web')->namespace('Web')->group(function () {
