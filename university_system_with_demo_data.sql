@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2024 at 07:12 AM
+-- Generation Time: Nov 29, 2024 at 10:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -981,8 +981,7 @@ CREATE TABLE `enroll_subjects` (
 --
 
 INSERT INTO `enroll_subjects` (`id`, `program_id`, `semester_id`, `section_id`, `status`, `created_at`, `updated_at`) VALUES
-(9, 10, 1, 1, 1, '2024-11-26 18:21:01', '2024-11-26 18:21:01'),
-(10, 10, 1, 2, 1, '2024-11-26 18:21:26', '2024-11-26 18:21:26');
+(9, 10, 1, 1, 1, '2024-11-26 18:21:01', '2024-11-26 18:21:01');
 
 -- --------------------------------------------------------
 
@@ -1000,9 +999,7 @@ CREATE TABLE `enroll_subject_subject` (
 --
 
 INSERT INTO `enroll_subject_subject` (`enroll_subject_id`, `subject_id`) VALUES
-(9, 18),
-(10, 19),
-(10, 16);
+(9, 18);
 
 -- --------------------------------------------------------
 
@@ -1087,6 +1084,13 @@ CREATE TABLE `exam_routines` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `exam_routines`
+--
+
+INSERT INTO `exam_routines` (`id`, `exam_type_id`, `session_id`, `program_id`, `semester_id`, `section_id`, `subject_id`, `date`, `start_time`, `end_time`, `status`, `created_at`, `updated_at`) VALUES
+(22, 2, 4, 10, 1, 1, 18, '2024-11-28', '19:10:00', '20:15:00', 1, '2024-11-28 09:00:56', '2024-11-28 09:00:56');
+
 -- --------------------------------------------------------
 
 --
@@ -1098,6 +1102,13 @@ CREATE TABLE `exam_routine_room` (
   `room_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `exam_routine_room`
+--
+
+INSERT INTO `exam_routine_room` (`exam_routine_id`, `room_id`) VALUES
+(22, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -1108,6 +1119,13 @@ CREATE TABLE `exam_routine_user` (
   `exam_routine_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exam_routine_user`
+--
+
+INSERT INTO `exam_routine_user` (`exam_routine_id`, `user_id`) VALUES
+(22, 10);
 
 -- --------------------------------------------------------
 
@@ -3604,7 +3622,16 @@ INSERT INTO `program_semester` (`program_id`, `semester_id`) VALUES
 (13, 7),
 (17, 8),
 (13, 9),
-(16, 10);
+(16, 10),
+(13, 2),
+(15, 2),
+(14, 2),
+(11, 4),
+(10, 4),
+(12, 4),
+(14, 5),
+(17, 5),
+(16, 5);
 
 -- --------------------------------------------------------
 
@@ -3626,17 +3653,16 @@ CREATE TABLE `program_semester_sections` (
 --
 
 INSERT INTO `program_semester_sections` (`id`, `program_id`, `semester_id`, `section_id`, `created_at`, `updated_at`) VALUES
-(169, 10, 1, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(170, 12, 2, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(171, 13, 7, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(172, 13, 9, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(173, 15, 3, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(174, 17, 8, 2, '2024-11-26 18:20:19', '2024-11-26 18:20:19'),
-(175, 10, 1, 1, '2024-11-26 18:20:30', '2024-11-26 18:20:30'),
-(176, 12, 2, 1, '2024-11-26 18:20:30', '2024-11-26 18:20:30'),
-(177, 13, 7, 1, '2024-11-26 18:20:30', '2024-11-26 18:20:30'),
-(178, 13, 9, 1, '2024-11-26 18:20:30', '2024-11-26 18:20:30'),
-(179, 17, 8, 1, '2024-11-26 18:20:30', '2024-11-26 18:20:30');
+(180, 10, 1, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(181, 12, 2, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(182, 13, 4, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(183, 13, 7, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(184, 13, 9, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(185, 15, 3, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(186, 15, 5, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(187, 14, 6, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(188, 17, 8, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
+(189, 16, 10, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12');
 
 -- --------------------------------------------------------
 
@@ -3782,14 +3808,7 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`id`, `title`, `created_at`, `updated_at`) VALUES
-(1, 'Quiz 1', '2024-11-26 18:35:26', '2024-11-26 18:35:26'),
-(2, 'Quiz 2', '2024-11-26 18:36:12', '2024-11-26 18:36:12'),
-(3, 'Quiz 2', '2024-11-26 18:38:22', '2024-11-26 18:38:22'),
-(4, 'Quiz 2', '2024-11-26 18:38:50', '2024-11-26 18:38:50'),
-(5, 'Test', '2024-11-26 18:41:00', '2024-11-26 18:41:00'),
-(6, 'test', '2024-11-27 00:29:19', '2024-11-27 00:29:19'),
-(7, 'test', '2024-11-27 00:29:48', '2024-11-27 00:29:48'),
-(8, 'Test', '2024-11-27 00:30:00', '2024-11-27 00:30:00');
+(1, 'Exam', '2024-11-29 12:09:24', '2024-11-29 12:09:24');
 
 -- --------------------------------------------------------
 
@@ -4626,8 +4645,7 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `title`, `seat`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Section A', NULL, 1, '2022-09-30 13:27:34', '2022-09-30 13:28:09'),
-(2, 'Section B', NULL, 1, '2022-09-30 13:29:15', '2022-09-30 13:29:15');
+(1, 'Section A', NULL, 1, '2022-09-30 13:27:34', '2022-09-30 13:28:09');
 
 -- --------------------------------------------------------
 
@@ -4682,9 +4700,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `title`, `start_date`, `end_date`, `current`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Spring-2025', '2025-07-01', '2025-12-31', 0, 1, '2022-09-30 13:17:39', '2024-11-26 11:21:28'),
-(3, 'Summer 2025', '2025-01-01', '2025-07-30', 0, 1, '2022-09-30 13:18:14', '2024-11-26 11:20:31'),
-(4, 'Fall 2025', '2025-01-01', '2025-12-31', 1, 1, '2022-09-30 13:18:44', '2024-11-26 11:19:46');
+(2, 'Spring-2025', '2025-07-01', '2025-12-31', 0, 1, '2022-09-30 13:17:39', '2024-11-28 08:30:44'),
+(3, 'Summer 2025', '2025-01-01', '2025-07-30', 0, 1, '2022-09-30 13:18:14', '2024-11-28 08:30:44'),
+(4, 'Fall 2025', '2025-01-01', '2025-12-31', 1, 1, '2022-09-30 13:18:44', '2024-11-28 08:30:44');
 
 -- --------------------------------------------------------
 
@@ -5652,7 +5670,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `staff_id`, `department_id`, `designation_id`, `first_name`, `last_name`, `father_name`, `mother_name`, `email`, `email_verified_at`, `password`, `password_text`, `gender`, `dob`, `joining_date`, `ending_date`, `phone`, `emergency_phone`, `mother_tongue`, `marital_status`, `blood_group`, `nationality`, `national_id`, `passport_no`, `present_province`, `present_district`, `present_village`, `present_address`, `permanent_province`, `permanent_district`, `permanent_village`, `permanent_address`, `education_level`, `graduation_academy`, `year_of_graduation`, `graduation_field`, `experience`, `note`, `basic_salary`, `contract_type`, `work_shift`, `salary_type`, `bank_account_name`, `bank_account_no`, `bank_name`, `ifsc_code`, `bank_brach`, `tin_no`, `photo`, `signature`, `resume`, `joining_letter`, `is_admin`, `login`, `status`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `religion`, `caste`, `country`, `epf_no`) VALUES
-(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '1e4gm9Tl9XHHx6yDl7Dx44y1iKwx4SVscBCP3jlcsR5lBVWv1KV1DWc7qgmW', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
+(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'smpVzUAXKbsrJxXrEp98HRlNmJd1j9KAmiJRjP7Sja9mi35ckKOunB3OLGxz', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
 (10, '110', 5, 1, 'Noman', 'Ishaq', 'Muhammad Ishaq', NULL, 'nomanishaq241@gmail.com', NULL, '$2y$10$Mdg3Mp5JVc92aDmwjlI1/eI0OrUuCiRyZOCLCwmKWdmdruGZGKdAC', 'eyJpdiI6IiszUlJpc0diRFRFTHRNckQzVWI2VWc9PSIsInZhbHVlIjoicFlleXF6Nm14OXdPL0dzczM4aTlzZz09IiwibWFjIjoiY2FjNjk5YzQ4ZmViOWY1ZjlhYjBmYzc5NWI2YWU2MzcwOWM0MzhlNGRkMmU1YjJhNjMyYThjZWM0NTBiMjBmMCIsInRhZyI6IiJ9', 1, '2000-10-30', '2020-10-31', NULL, '0309 3672516', '03002084200', NULL, 1, 7, NULL, '4230171983973', NULL, 0, NULL, NULL, NULL, 0, 0, NULL, NULL, 'BS', 'Virutal Univeristy', '2021', 'Computer Science', '5 Year Experience', NULL, 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'noman_ishaq_1732562494.jpg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, NULL, '2024-11-25 19:21:34', '2024-11-25 19:22:06', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -7064,7 +7082,7 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `exam_routines`
 --
 ALTER TABLE `exam_routines`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `exam_types`
@@ -7388,7 +7406,7 @@ ALTER TABLE `programs`
 -- AUTO_INCREMENT for table `program_semester_sections`
 --
 ALTER TABLE `program_semester_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -7400,7 +7418,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `result_contributions`
