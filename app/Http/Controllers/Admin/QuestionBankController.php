@@ -15,7 +15,7 @@ class QuestionBankController extends Controller
     public function index()
     {
 
-        $data['title'] = "Quiz Paper";
+        $data['title'] = "Question Bank";
         // Question bank list show karne ke liye logic
 
         $data['quizzes'] = Quiz::all();
@@ -28,7 +28,7 @@ class QuestionBankController extends Controller
     {
 
          // Set the title
-    $data['title'] = "Add Quiz Paper";
+    $data['title'] = "Add Qustion Paper";
 
     // Fetch all quizzes from the database
     $data['quizzes'] = Quiz::findOrFail($id);
@@ -131,7 +131,7 @@ class QuestionBankController extends Controller
     }
 
 
-    
+
     //
 
 }

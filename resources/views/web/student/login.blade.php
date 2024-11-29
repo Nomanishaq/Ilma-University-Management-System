@@ -54,6 +54,12 @@
             </p>
         @endif
 
+
+        <p class="mb-2 text-decoration-underline">
+                <a href="/admin/login">
+                   Admin Dashboard
+                </a>
+        </p>
         @if (Route::has('student.register'))
         <p class="mb-0 text-muted">
             {{ __("auth_dont_have_account") }} 

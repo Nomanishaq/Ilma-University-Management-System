@@ -289,7 +289,7 @@ function addquestion(isQuizBase) {
                 <option value="PLO2">PLO2</option>
                 <option value="PLO3">PLO3</option>
                 <option value="PLO4">PLO4</option>
-                <option value="PLO5">PLO5/option>
+                <option value="PLO5">PLO5</option>
                 <option value="PLO6">PLO6</option>
                 <option value="PLO7">PLO7</option>
                 <option value="PLO8">PLO8</option>

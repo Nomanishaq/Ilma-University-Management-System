@@ -44,6 +44,7 @@
         </form>
         <!-- Form End -->
 
+
         @if (Route::has('password.request'))
             <p class="mb-2 text-muted">
                 <a href="{{ route('password.request') }}">
@@ -51,6 +52,13 @@
                 </a>
             </p>
         @endif
+
+        
+        <p class="mb-2 text-decoration-underline">
+                <a href="/student/login">
+                   Student Dashboard
+                </a>
+        </p>
 
         @if (Route::has('register'))
         <p class="mb-0 text-muted">
