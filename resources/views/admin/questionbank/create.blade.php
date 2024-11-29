@@ -143,7 +143,38 @@ jQuery('document').ready(function(){
                  exam_type_marks = marks.class_participation;
             }
 
-            console.log(exam_type_marks);
+            // console.log(exam_type_marks);
+
+            
+            // calculate marks
+            function calculateTotalMarks() {
+                let totalMarks = 0;
+
+                // Select all total_marks input fields
+                document.querySelectorAll('input[name^="total_marks"]').forEach((input) => {
+                    const value = parseFloat(input.value);
+                    if (!isNaN(value)) {
+                        totalMarks += value; // Add valid numbers
+                    }
+                });
+
+                if(totalMarks > exam_type_marks){
+                    alert("error");
+                }
+
+                // Log the total marks to the console
+                // console.log('Total Marks:', totalMarks);
+            }
+
+            // Attach event listeners to all total_marks input fields
+            document.addEventListener('input', function (event) {
+                if (event.target && event.target.name.startsWith('total_marks')) {
+                    calculateTotalMarks();
+                }
+            });
+
+
+
             
             if (exam_type === "quiz") {
                 jQuery("#quiz_type").show(); // Show the element if value is "quiz"
@@ -307,6 +338,7 @@ jQuery('document').ready(function () {
         addquestion(isQuizBase);
         questionIndex++;
     });
+
 });
 
 
