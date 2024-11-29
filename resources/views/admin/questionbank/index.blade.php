@@ -35,7 +35,7 @@
 
         <div class="row">
             <div class="col-12 py-4">
-                    <button class="btn btn-info" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add MCQS Paper</button>
+                    <button class="btn btn-info" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add Qustion Paper</button>
             </div>
             <div class="card">
                 <div class="card-block">
@@ -52,8 +52,6 @@
                                     <th>Section</th>
                                     <th>{{ __('field_action') }}</th>
                                 </tr>
-
-                              
 
                             </thead>
                             <tbody>
@@ -72,13 +70,18 @@
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
-                                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                            
+                                            <a href="" class="btn btn-icon btn-primary btn-sm">
+                                                <i class="far fa-edit"></i>
+                                            </a>
 
                                             <a href="" class="btn btn-icon btn-primary btn-sm">
                                                 <i class="fas fa-print"></i>
                                             </a>
+
+                                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
 
                                             <!-- Include Delete modal -->
                                         </td>

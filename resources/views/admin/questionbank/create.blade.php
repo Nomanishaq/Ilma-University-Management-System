@@ -37,6 +37,16 @@
 
 
                                 <div class="form-group col-md-4">
+                                    <label for="title">Exam Hours<span>*</span></label>
+                                    <input type="number" class="form-control" name="exam_time" id="exam_time" required />
+                                    <div class="invalid-feedback">
+                                        {{ __('required_field') }} {{ __('    ') }}
+                                    </div>
+                                </div>
+                                
+
+
+                                <div class="form-group col-md-4">
                                     <label for="title">Select Exam Type<span>*</span></label>
                                     <select class="form-control" name="exam_type" id="exam_type" required>
                                         <option value="">Select</option>
@@ -50,10 +60,8 @@
                                     <div class="invalid-feedback">
                                         {{ __('required_field') }} {{ __('    ') }}
                                     </div>
-
-
-
                                 </div>
+                                
 
                                 <div class="col-4" id="quiz_type">
                                 <div class="form-group">
@@ -70,7 +78,9 @@
 
                                     </div>
                                 </div>
-                                
+
+
+                              
                                 <div class="col-md-12">
                                     <h3>Questions</h3>
                                 </div>
@@ -259,6 +269,13 @@ function addquestion(isQuizBase) {
                 <option value="CLO3">CLO3</option>
                 <option value="CLO4">CLO4</option>
                 <option value="CLO5">CLO5</option>
+                <option value="CLO6">CLO6</option>
+                <option value="CLO7">CLO7</option>
+                <option value="CLO8">CLO8</option>
+                <option value="CLO9">CLO9</option>
+                <option value="CLO10">CLO10</option>
+                <option value="CLO11">CLO11</option>
+                <option value="CLO12">CLO12</option>
             </select>
             <div class="invalid-feedback">
                 {{ __('required_field') }}
@@ -272,6 +289,14 @@ function addquestion(isQuizBase) {
                 <option value="PLO2">PLO2</option>
                 <option value="PLO3">PLO3</option>
                 <option value="PLO4">PLO4</option>
+                <option value="PLO5">PLO5/option>
+                <option value="PLO6">PLO6</option>
+                <option value="PLO7">PLO7</option>
+                <option value="PLO8">PLO8</option>
+                <option value="PLO9">PLO9</option>
+                <option value="PLO10">PLO10</option>
+                <option value="PLO11">PLO11</option>
+                <option value="PLO12">PLO12</option>
             </select>
             <div class="invalid-feedback">
                 {{ __('required_field') }}
@@ -294,6 +319,9 @@ function addquestion(isQuizBase) {
                 <option value="C1">C1</option>
                 <option value="C2">C2</option>
                 <option value="C3">C3</option>
+                <option value="C4">C4</option>
+                <option value="C5">C5</option>
+                <option value="C6">C6</option>
             </select>
             <div class="invalid-feedback">
                 {{ __('required_field') }}
@@ -305,6 +333,11 @@ function addquestion(isQuizBase) {
                 <option value="">Select Psychomotor</option>
                 <option value="P1">P1</option>
                 <option value="P2">P2</option>
+                <option value="P2">P3</option>
+                <option value="P2">P4</option>
+                <option value="P2">P5</option>
+                <option value="P2">P6</option>
+                <option value="P2">P7</option>
             </select>
             <div class="invalid-feedback">
                 {{ __('required_field') }}
@@ -316,6 +349,9 @@ function addquestion(isQuizBase) {
                 <option value="">Select Affective</option>
                 <option value="A1">A1</option>
                 <option value="A2">A2</option>
+                <option value="A2">A3</option>
+                <option value="A2">A4</option>
+                <option value="A2">A5</option>
             </select>
             <div class="invalid-feedback">
                 {{ __('required_field') }}
