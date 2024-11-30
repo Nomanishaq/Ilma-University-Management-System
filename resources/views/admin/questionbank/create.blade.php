@@ -35,6 +35,14 @@
 
                                 @include('common.inc.quiz_search_filter')
 
+                                <div class="form-group col-md-4">
+                                    <label for="title">Teacher<span>*</span></label>
+                                    <input type="text" class="form-control" name="teacher" id="teacher" value="{{Auth::user()->first_name }} {{ Auth::user()->last_name}}" readonly required />
+                                    <div class="invalid-feedback">
+                                        {{ __('required_field') }} {{ __('    ') }}
+                                    </div>
+                                </div>
+                                
 
                                 <div class="form-group col-md-4">
                                     <label for="title">Exam Hours<span>*</span></label>

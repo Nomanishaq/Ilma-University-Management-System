@@ -290,26 +290,26 @@
             
                 <li class="nav-item pcoded-hasmenu {{ Request::is('admin/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
                     <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">Faculty of Computer Science</span>
+                        <span class="pcoded-mtext">Faculty of CS</span>
                     </a>
 
                     <ul class="pcoded-submenu">
                         <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx"  class="">BS-CS</a></li>
                         <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx" class="">BS-AI</a></li>
-                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-CST</a></li>
-                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-DS</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/CST-Courses.xlsx" download="CST-Courses.xlsx" class="">BS-CST</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/DS-Courses.xlsx" download="DS-Courses.xlsx" class="">BS-DS</a></li>
         
                     </ul>
                 </li>
 
                 <li class="nav-item pcoded-hasmenu {{ Request::is('admin/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
                     <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">Faculty of Software Engineering</span>
+                        <span class="pcoded-mtext">Faculty of SE</span>
                     </a>
 
                     <ul class="pcoded-submenu">
-                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-IT</a></li>
-                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-SE</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/se/IT-Courses.xlsx" download="IT-Courses.xlsx" class="">BS-IT</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/se/SE-Courses.xlsx" download="SE-Courses.xlsx" class="">BS-SE</a></li>
                       
                     </ul>
                 </li>
