@@ -283,14 +283,37 @@
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/course-learning-outcome*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fas fa-graduation-cap"></i></span>
-                <span class="pcoded-mtext">CLO or PLO</span>
+                <span class="pcoded-mtext">Course Mapping</span>
             </a>
             <ul class="pcoded-submenu">
                
-                <li class="{{ Request::is('admin/clo*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">CLO</a></li>
-                
-                <li class="{{ Request::is('admin/plo*') ? 'active' : '' }}"><a href="/files/plo.pdf" download="plo.pdf" class="">PLO</a></li>
-               
+            
+                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-mtext">Faculty of Computer Science</span>
+                    </a>
+
+                    <ul class="pcoded-submenu">
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx"  class="">BS-CS</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx" class="">BS-AI</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-CST</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-DS</a></li>
+        
+                    </ul>
+                </li>
+
+                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-mtext">Faculty of Software Engineering</span>
+                    </a>
+
+                    <ul class="pcoded-submenu">
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-IT</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/clo.pdf" download="clo.pdf" class="">BS-SE</a></li>
+                      
+                    </ul>
+                </li>
+
             </ul>
         </li>
 
