@@ -76,6 +76,8 @@
         </li>
         @endif
 
+
+
         @if(panel('panel_notice')->status == 1)
         <li class="nav-item {{ Request::is('student/notice*') ? 'active' : '' }}">
             <a href="{{ route('student.notice.index') }}" class="nav-link">
@@ -111,6 +113,43 @@
             </a>
         </li>
         @endif
+
+        <li class="nav-item pcoded-hasmenu {{ Request::is('student/course-learning-outcome*') ? 'pcoded-trigger active' : '' }}">
+            <a href="#!" class="nav-link">
+                <span class="pcoded-micon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="pcoded-mtext">Course Mapping</span>
+            </a>
+            <ul class="pcoded-submenu">
+               
+            
+                <li class="nav-item pcoded-hasmenu {{ Request::is('student/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-mtext">Faculty of CS</span>
+                    </a>
+
+                    <ul class="pcoded-submenu">
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/CS-Courses.xlsx" download="CS-Courses.xlsx"  class="">BS-CS</a></li>
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx" class="">BS-AI</a></li>
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/CST-Courses.xlsx" download="CST-Courses.xlsx" class="">BS-CST</a></li>
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/DS-Courses.xlsx" download="DS-Courses.xlsx" class="">BS-DS</a></li>
+        
+                    </ul>
+                </li>
+
+                <li class="nav-item pcoded-hasmenu {{ Request::is('student/student/single-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/group-enroll*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/subject-adddrop*') ? 'pcoded-trigger active' : '' }} {{ Request::is('student/student/course-complete*') ? 'pcoded-trigger active' : '' }}">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-mtext">Faculty of SE</span>
+                    </a>
+
+                    <ul class="pcoded-submenu">
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/se/IT-Courses.xlsx" download="IT-Courses.xlsx" class="">BS-IT</a></li>
+                        <li class="{{ Request::is('student/student/single-enroll*') ? 'active' : '' }}"><a href="/files/se/SE-Courses.xlsx" download="SE-Courses.xlsx" class="">BS-SE</a></li>
+                      
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
 
         @if(panel('panel_profile')->status == 1)
         <li class="nav-item {{ Request::is('student/profile*') ? 'active' : '' }}">

@@ -294,7 +294,7 @@
                     </a>
 
                     <ul class="pcoded-submenu">
-                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx"  class="">BS-CS</a></li>
+                        <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/CS-Courses.xlsx" download="CS-Courses.xlsx"  class="">BS-CS</a></li>
                         <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/AI-Courses.xlsx" download="AI-Courses.xlsx" class="">BS-AI</a></li>
                         <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/CST-Courses.xlsx" download="CST-Courses.xlsx" class="">BS-CST</a></li>
                         <li class="{{ Request::is('admin/student/single-enroll*') ? 'active' : '' }}"><a href="/files/cs/DS-Courses.xlsx" download="DS-Courses.xlsx" class="">BS-DS</a></li>
