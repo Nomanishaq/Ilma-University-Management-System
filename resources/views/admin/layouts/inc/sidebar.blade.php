@@ -16,10 +16,6 @@
                 <span class="pcoded-mtext">{{ trans_choice('module_admission', 2) }}</span>
             </a>
             <ul class="pcoded-submenu">
-                @canany(['application-create', 'application-view'])
-                <li class="{{ Request::is('admin/admission/application*') ? 'active' : '' }}"><a href="{{ route('admin.application.index') }}" class="">{{ trans_choice('module_application', 2) }}</a></li>
-                @endcanany
-
                 @canany(['student-create'])
                 <li class="{{ Request::is('admin/admission/student/create') ? 'active' : '' }}"><a href="{{ route('admin.student.create') }}" class="">{{ trans_choice('module_registration', 1) }}</a></li>
                 @endcanany
@@ -28,23 +24,6 @@
                 <li class="{{ Request::is('admin/admission/student') ? 'active' : '' }}"><a href="{{ route('admin.student.index') }}" class="">{{ trans_choice('module_student', 1) }} {{ __('list') }}</a></li>
                 @endcanany
 
-                @canany(['student-transfer-in-create', 'student-transfer-in-view', 'student-transfer-out-create', 'student-transfer-out-view'])
-                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/admission/student-transfer*') ? 'pcoded-trigger active' : '' }}">
-                    <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">{{ trans_choice('module_student_transfer', 2) }}</span>
-                    </a>
-
-                    <ul class="pcoded-submenu">
-                        @canany(['student-transfer-in-create', 'student-transfer-in-view'])
-                        <li class="{{ Request::is('admin/admission/student-transfer-in*') ? 'active' : '' }}"><a href="{{ route('admin.student-transfer-in.index') }}" class="">{{ trans_choice('module_transfer_in', 1) }}</a></li>
-                        @endcanany
-
-                        @canany(['student-transfer-out-create', 'student-transfer-out-view'])
-                        <li class="{{ Request::is('admin/admission/student-transfer-out*') ? 'active' : '' }}"><a href="{{ route('admin.student-transfer-out.index') }}" class="">{{ trans_choice('module_transfer_out', 1) }}</a></li>
-                        @endcanany
-                    </ul>
-                </li>
-                @endcanany
 
                 @canany(['status-type-create', 'status-type-view'])
                 <li class="{{ Request::is('admin/admission/status-type*') ? 'active' : '' }}"><a href="{{ route('admin.status-type.index') }}" class="">{{ trans_choice('module_status_type', 2) }}</a></li>

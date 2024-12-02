@@ -193,8 +193,8 @@
                                         <label for="title">Select Qustion Type<span>*</span></label>
                                         <select class="form-control" name="qustion_type" id="qustion_type" required>
                                             <option value="">Select</option>
-                                            <option value="quiz_base">Quiz Base</option>
-                                            <option value="question_base">Question Base</option>
+                                            <option value="quiz_base">ADD MCQS</option>
+                                            <option value="question_base">ADD QUESTION</option>
                                         </select>
 
                                         <div class="invalid-feedback">

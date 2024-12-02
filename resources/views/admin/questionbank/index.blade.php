@@ -13,15 +13,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Quiz Title</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Exam Title</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form method="post" action="{{ route('admin.quiz.store') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="">Quiz Title</label>
-                                    <input type="text" placeholder="Quiz Title" class="form-control" name="title"
+                                    <label for="">Exam Title</label>
+                                    <input type="text" placeholder="Exam Title" class="form-control" name="title"
                                         id="" required>
                                 </div>
                                 <div class="form-group">

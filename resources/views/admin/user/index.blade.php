@@ -173,11 +173,7 @@
                                             <a href="#" class="btn btn-dark btn-sm" onclick="PopupWin('{{ route($route.'.print-password', [$row->id]) }}', '{{ $title }}', 800, 500);"><i class="fas fa-print"></i> {{ __('field_password') }}</a>
                                             @endcan --}}
 
-                                            <form action="{{ route($route.'.send-password', [$row->id]) }}" method="post" style="display: inline;">
-                                            @csrf
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-envelope"></i> {{ __('field_password') }}</button>
-                                            </form>
-                                            <br/>
+                                        
 
                                             <a href="{{ route($route.'.show', $row->id) }}" class="btn btn-icon btn-success btn-sm">
                                                 <i class="fas fa-eye"></i>
