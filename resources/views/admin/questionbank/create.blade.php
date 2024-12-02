@@ -161,7 +161,7 @@
                                 <div class="col-4" id="quiz_type">
                                     <div class="form-group">
                                         <label for="title">Select Quiz Type<span>*</span></label>
-                                        <select class="form-control" name="quiz_type" id="" required>
+                                        <select class="form-control" name="quiz_type" id="">
                                             <option value="">Select</option>
                                             <option value="quiz_1" @if($quizzes->quiz_type === 'quiz_1') selected @endif>Quiz 1</option>
                                             <option value="quiz_2" @if($quizzes->quiz_type === 'quiz_2') selected @endif>Quiz 2</option>
@@ -683,9 +683,10 @@
     });
 
     console.log(program_id)
-    $(".faculty").on('change', changeFaculty());
+    $(".faculty").on('change', function(){
+        changeFaculty()
+    });
     function changeFaculty(){
-        console.log(program_id)
         // e.preventDefault(e);
         var program = $(".program");
         $.ajaxSetup({
