@@ -18,7 +18,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="post" action="{{ route('admin.quiz.store') }}">
-                        @csrf 
+                        @csrf
                             <div class="form-group">
                                 <label for="">Quiz Title</label>
                                 <input type="text" placeholder="Quiz Title" class="form-control" name="title" id="" required>
@@ -28,7 +28,7 @@
                             </div>
                         </form>
                     </div>
-                   
+
                     </div>
                 </div>
                 </div>
@@ -55,7 +55,7 @@
 
                             </thead>
                             <tbody>
-                            @foreach ($quizzes as $row => $quiz) 
+                            @foreach ($quizzes as $row => $quiz)
                                 <tr>
                                         <td>{{ $row + 1 }}</td>
                                         <td>{{ $quiz->title }}</td>
@@ -70,12 +70,12 @@
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
-                                            
+
                                             <a href="" class="btn btn-icon btn-primary btn-sm">
                                                 <i class="far fa-edit"></i>
                                             </a>
 
-                                            <a href="{{ route('admin.questionbank.showprint', ['id' => $quiz->id]) }}" class="btn btn-icon btn-primary btn-sm">
+                                            <a data-quiz-id="{{ $quiz->id }}" class="btn btn-icon btn-primary btn-sm" id="generate-pdf">
                                                 <i class="fas fa-print"></i>
                                             </a>
 
@@ -99,5 +99,34 @@
     </div>
 </div>
 <!-- End Content-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $('#generate-pdf').on('click', function(e) {
+    e.preventDefault();
 
+    const quizId = $(this).data('quiz-id'); // Get the quiz ID from the button's data attribute
+
+    $.ajax({
+        url: `/admin/quiz/${quizId}/pdf`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob', // Tell the browser to handle binary data
+        },
+        success: function(response) {
+            const url = window.URL.createObjectURL(new Blob([response]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Quiz_${quizId}.pdf`; // Suggested filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        },
+        error: function(xhr) {
+            console.error('PDF generation failed:', xhr.responseText);
+            // alert('Something went wrong! Unable to generate the PDF.');
+        }
+    });
+});
+
+</script>
 @endsection

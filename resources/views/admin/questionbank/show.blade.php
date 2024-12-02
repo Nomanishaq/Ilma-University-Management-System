@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,82 +8,102 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
         }
+
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
+
+        .header h1,
+        .header h2 {
+            margin: 5px 0;
+        }
+
+        .note {
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
-        th, td {
-            border: 1px solid #ddd;
+
+        th,
+        td {
+            border: 1px solid #000;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
+
         th {
             background-color: #f4f4f4;
+            font-weight: bold;
         }
-        .options p {
-            margin: 0;
+
+        .question {
+            text-align: left;
+        }
+
+        .obe-attainment {
+            font-size: 0.9em;
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h2>{{ $quiz->title }}</h2>
-        <p>Faculty: {{ $quiz->faculty->title ?? 'N/A' }}</p>
-        <p>Program: {{ $quiz->program->title ?? 'N/A' }}</p>
-        <p>Session: {{ $quiz->session->title ?? 'N/A' }}</p>
-        <p>Semester: {{ $quiz->semester->title ?? 'N/A' }}</p>
-        <p>Section: {{ $quiz->section->title ?? 'N/A' }}</p>
-        <p>Subject: {{ $quiz->subject->title ?? 'N/A' }}</p>
-        <p>Exam Type: {{ ucfirst($quiz->exam_type) }}</p>
-        <p>Exam Time: {{ $quiz->exam_time }} hour(s)</p>
+        <h1>{{ $quiz->title }}</h1>
+        <h2>{{ $quiz->exam_type }} Examinations {{ $quiz->session }}</h2>
     </div>
+    <p class="note">Note: Attempt all questions. Do not write anything on the paper.</p>
 
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Question</th>
-                <th>Options</th>
+                <th>Questions</th>
                 <th>Marks</th>
-                <th>CLO</th>
-                <th>PLO</th>
-                <th>Domains</th>
+                <th>OBE Attainment (C/P/An)<br>(CLO-n) (PLO-n)</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($quiz->questions as $index => $question)
+            @foreach ($quiz->questions as $index => $question)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $question['question'] }}</td>
-                    <td>
-                        @if(!empty($question['options']))
+                    <td class="question">
+                        <strong>Part {{ chr(65 + $index) }})</strong> {{ $question['question'] }}
+                        <br>
+                        @if ($question->question_type == 'quiz_base')
                             @php $options = json_decode($question['options'], true); @endphp
-                            <div class="options">
-                                <p>A: {{ $options['option_a'] ?? 'N/A' }}</p>
-                                <p>B: {{ $options['option_b'] ?? 'N/A' }}</p>
-                                <p>C: {{ $options['option_c'] ?? 'N/A' }}</p>
-                                <p>D: {{ $options['option_d'] ?? 'N/A' }}</p>
-                            </div>
-                        @else
-                            N/A
+                            @if ($options)
+                                @foreach (['option_a', 'option_b', 'option_c', 'option_d'] as $key => $optionKey)
+                                    @if (!empty($options[$optionKey]))
+                                        <p><strong>{{ chr(65 + $key) }}.</strong> {{ $options[$optionKey] }}</p>
+                                    @endif
+                                @endforeach
+                            @else
+                                <p>No options available.</p>
+                            @endif
                         @endif
                     </td>
                     <td>{{ $question['total_marks'] }}</td>
-                    <td>{{ $question['clo'] ?? 'N/A' }}</td>
-                    <td>{{ $question['plo'] ?? 'N/A' }}</td>
-                    <td>
-                        <p>Cognitive: {{ $question['cognitive'] ?? 'N/A' }}</p>
-                        <p>Psychomotor: {{ $question['psychomotor'] ?? 'N/A' }}</p>
-                        <p>Affective: {{ $question['affective'] ?? 'N/A' }}</p>
+                    <td class="obe-attainment">
+                        <p>CLO: {{ $question['clo'] ?? 'N/A' }}</p>
+                        <p>PLO: {{ $question['plo'] ?? 'N/A' }}</p>
+                        <p>Domains:
+                            Cognitive ({{ $question['cognitive'] ?? 'N/A' }}),
+                            Psychomotor ({{ $question['psychomotor'] ?? 'N/A' }}),
+                            Affective ({{ $question['affective'] ?? 'N/A' }})
+                        </p>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </body>
+
 </html>

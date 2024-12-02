@@ -9,6 +9,7 @@ use App\Models\Quiz;
 use App\Models\Subject;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class QuestionBankController extends Controller
 {
@@ -142,6 +143,14 @@ class QuestionBankController extends Controller
     }
 
 
-    //
+    public function generateQuizPdf($quizId)
+    {
+        $quiz = Quiz::with(['faculty', 'program', 'session', 'semester', 'section', 'subject', 'questions'])->findOrFail($quizId);
+        $pdf = Pdf::loadView('admin.questionbank.show', compact('quiz'));
 
+        // Return the PDF as a binary response
+        return response($pdf->output(), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="Quiz_' . $quiz->title . '.pdf"');
+    }
 }

@@ -59,7 +59,7 @@ class QuizController extends Controller
 
         // Loop through each question and save to the database
         foreach ($questions as $questionData) {
-            return response()->json($questionData['options']);
+            // return response()->json($questionData['options']);
             // Prepare the data to be saved
             $question = new QuizQuestion();
             $question->quiz_id = $quizId;

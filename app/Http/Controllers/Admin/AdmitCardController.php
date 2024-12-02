@@ -90,7 +90,7 @@ class AdmitCardController extends Controller
         else{
             $data['selected_student_id'] = Null;
         }
-        
+
 
         // Search Filter
         $data['faculties'] = Faculty::where('status', '1')->orderBy('title', 'asc')->get();
@@ -155,13 +155,13 @@ class AdmitCardController extends Controller
 
         })->all();
 
-        
+
         $data['print'] = PrintSetting::where('slug', 'admit-card')->first();
 
 
         return view($this->view.'.index', $data);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
