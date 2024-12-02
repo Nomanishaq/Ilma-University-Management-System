@@ -459,6 +459,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     Route::post('/quiz/{id}/update', [QuizController::class, 'update'])->name('quiz.update');
     Route::post('/save-quiz-questions', [QuizController::class, 'storeQuestions']);
     Route::get('/quiz/{quizId}/pdf', [QuestionBankController::class, 'generateQuizPdf'])->name('generateQuizPdf');
+    Route::delete('/questionbank/{id}', [QuizController::class, 'delete'])->name('questionbank.delete');
 
 
     // Front Web Routes

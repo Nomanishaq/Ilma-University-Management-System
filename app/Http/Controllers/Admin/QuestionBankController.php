@@ -18,8 +18,9 @@ class QuestionBankController extends Controller
 
         $data['title'] = "Question Bank";
         // Question bank list show karne ke liye logic
+        $quizzes = Quiz::with(['faculty', 'program', 'session', 'semester', 'section', 'subject'])->get();
 
-        $data['quizzes'] = Quiz::all();
+        $data['quizzes'] = $quizzes;
 
         return view('admin.questionbank.index', $data);
     }

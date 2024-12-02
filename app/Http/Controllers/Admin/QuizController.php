@@ -43,7 +43,6 @@ class QuizController extends Controller
             'exam_type'    => 'nullable|in:quiz,mid_term,final_term,assignment,class_participation',
             'quiz_type'    => 'nullable|in:quiz_1,quiz_2',
         ]);
-
         $quiz = Quiz::findOrFail($id);
         $quiz->update($validated);
         Toastr::success(__('Question Paper updated successfully'), __('msg_success'));
@@ -65,7 +64,7 @@ class QuizController extends Controller
             $question->quiz_id = $quizId;
             $question->question_type = $questionData['question_type'];
             $question->question = $questionData['question'];
-            if($questionData['question_type'] === 'quiz_base'){
+            if ($questionData['question_type'] === 'quiz_base') {
                 $question->options = json_encode($questionData['options']);
             } // Store options as JSON
             $question->clo = $questionData['domain']['clo'];
@@ -80,5 +79,13 @@ class QuizController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    public function delete($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+        $quiz->delete();
+
+        return redirect()->route('admin.questionbank.index')->with('success', 'Quiz deleted successfully');
     }
 }
