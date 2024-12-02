@@ -10,6 +10,7 @@ use App\Models\Subject;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\QuizQuestion;
 
 class QuestionBankController extends Controller
 {
@@ -33,7 +34,7 @@ class QuestionBankController extends Controller
         $data['title'] = "Add Qustion Paper";
 
         // Fetch all quizzes from the database
-        $data['quizzes'] = Quiz::findOrFail($id);
+        $data['quizzes'] = Quiz::with(['questions'])->findOrFail($id);
         if (!empty($request->faculty) || $request->faculty != null) {
             $data['selected_faculty'] = $faculty = $request->faculty;
         } else {
@@ -123,6 +124,14 @@ class QuestionBankController extends Controller
         }
         // Pass both the title and quizzes to the view
         return view('admin.questionbank.create', $data);
+    }
+
+    public function deleteQuestion($id)
+    {
+        $question = QuizQuestion::findOrFail($id);
+        $question->delete();
+
+        return redirect()->back()->with('success', 'Question deleted successfully.');
     }
 
 

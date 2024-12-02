@@ -38,7 +38,7 @@
                                         <option value="">{{ __('select') }}</option>
                                         @if(isset($faculties))
                                         @foreach( $faculties->sortBy('title') as $faculty )
-                                        <option value="{{ $faculty->id }}" @if( $quizzes->faculty_id == $faculty->id) selected @endif>{{ $faculty->title }}</option>
+                                        <option value="{{ $faculty->id }}">{{ $faculty->title }}</option>
                                         @endforeach
                                         @endif
                                     </select>
@@ -163,8 +163,8 @@
                                         <label for="title">Select Quiz Type<span>*</span></label>
                                         <select class="form-control" name="quiz_type" id="" required>
                                             <option value="">Select</option>
-                                            <option value="quiz_1">Quiz 1</option>
-                                            <option value="quiz_2">Quiz 2</option>
+                                            <option value="quiz_1" @if($quizzes->quiz_type === 'quiz_1') selected @endif>Quiz 1</option>
+                                            <option value="quiz_2" @if($quizzes->quiz_type === 'quiz_2') selected @endif>Quiz 2</option>
                                         </select>
 
                                         <div class="invalid-feedback">
@@ -179,6 +179,54 @@
                             </div>
                         </div>
                     </form>
+                    <div class="container">
+                        <h3 class="my-3">Existing Questions</h3>
+                        <table class="table table-bordered w-75 mx-auto">
+                            <thead>
+                                <tr>
+                                    <th>Question ID</th>
+                                    <th>Question</th>
+                                    <th>Options</th>
+                                    <th>Total Marks</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($quizzes->questions)
+                                    @foreach ($quizzes->questions as $question)
+                                        <tr>
+                                            <td>{{ $question->id }}</td>
+                                            <td>{{ $question->question }}</td>
+                                            <td>
+                                                <ul>
+                                                    @foreach (json_decode($question->options, true) as $key => $option)
+                                                        <li><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong> {{ $option }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>{{ $question->total_marks }}</td>
+                                            <td>
+                                                <!-- Delete Option -->
+                                                <form action="{{ route('admin.question.delete', $question->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this question?');" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">No question created</td>
+                                    </tr>
+
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+
+
                     <form class="needs-validation" novalidate onsubmit="event.preventDefault(); submitQuizForm();" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-block">
@@ -246,9 +294,19 @@
 
         let exam_type_marks;
         let totalMarks = 0; // Track the total marks
-        let remainingMarks = 0; // Track remaining marks
+        let remainingMarks = 0;
+        const examType = @json($quizzes->exam_type);
+
+        if(examType){
+            $("#exam_type").val(examType).trigger('change');
+            examTypeChange()
+        }
 
         jQuery('#exam_type').change(function() {
+            examTypeChange();
+        });
+
+        function examTypeChange(){
             let exam_type = jQuery('#exam_type').val();
 
             // Set the exam type marks
@@ -281,7 +339,7 @@
 
             remainingMarks = exam_type_marks; // Set remaining marks on exam type change
             updateRemainingMarksDisplay();
-        });
+        }
 
         let questionIndex = 1;
 
@@ -502,166 +560,6 @@
     });
 </script>
 
-<!-- End Content-->
-<script type="text/javascript">
-    "use strict";
-    $("")
-    $(".faculty").on('change', function(e) {
-        e.preventDefault(e);
-        var program = $(".program");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('filter-program') }}",
-            data: {
-                _token: $('input[name=_token]').val(),
-                faculty: $(this).val()
-            },
-            success: function(response) {
-                // var jsonData=JSON.parse(response);
-                $('option', program).remove();
-                $('.program').append('<option value="">{{ __("select") }}</option>');
-                $.each(response, function() {
-                    $('<option/>', {
-                        'value': this.id,
-                        'text': this.title
-                    }).appendTo('.program');
-                });
-            }
-
-        });
-    });
-
-    $(".program").on('change', function(e) {
-        e.preventDefault(e);
-        var session = $(".session");
-        var semester = $(".semester");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('filter-session') }}",
-            data: {
-                _token: $('input[name=_token]').val(),
-                program: $(this).val()
-            },
-            success: function(response) {
-                // var jsonData=JSON.parse(response);
-                $('option', session).remove();
-                $('.session').append('<option value="">{{ __("select") }}</option>');
-                $.each(response, function() {
-                    $('<option/>', {
-                        'value': this.id,
-                        'text': this.title
-                    }).appendTo('.session');
-                });
-            }
-
-        });
-
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('filter-semester') }}",
-            data: {
-                _token: $('input[name=_token]').val(),
-                program: $(this).val()
-            },
-            success: function(response) {
-                // var jsonData=JSON.parse(response);
-                $('option', semester).remove();
-                $('.semester').append('<option value="0">{{ __("all") }}</option>');
-                $.each(response, function() {
-                    $('<option/>', {
-                        'value': this.id,
-                        'text': this.title
-                    }).appendTo('.semester');
-                });
-            }
-
-        });
-    });
-
-    $(".semester").on('change', function(e) {
-        e.preventDefault(e);
-        var section = $(".section");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('filter-section') }}",
-            data: {
-                _token: $('input[name=_token]').val(),
-                semester: $(this).val(),
-                program: $('.program option:selected').val()
-            },
-            success: function(response) {
-
-                // var jsonData=JSON.parse(response);
-                $('option', section).remove();
-                $('.section').append('<option value="0">{{ __("all") }}</option>');
-                $.each(response, function() {
-                    $('<option/>', {
-                        'value': this.id,
-                        'text': this.title
-                    }).appendTo('.section');
-                });
-            }
-
-        });
-    });
-
-    $(".session").on('change', function(e) {
-        e.preventDefault(e);
-        var subject = $(".subject");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('filter-quiz-subject') }}",
-            data: {
-                _token: $('input[name=_token]').val(),
-                session: $(this).val(),
-                program: $('.program option:selected').val()
-            },
-            success: function(response) {
-                console.log("Subjects", response);
-
-                // Check if the response contains an array of subjects inside another array
-                var subjects = response[0]; // Access the first array (which contains the subjects)
-
-                // Clear existing options
-                $('option', subject).remove();
-
-                // Append the default "select" option
-                $('.subject').append('<option value="">{{ __("select") }}</option>');
-
-                // Loop through each subject and append the options
-                $.each(subjects, function() {
-                    $('<option/>', {
-                        'value': this.id,
-                        'text': this.code + ' - ' + this.title
-                    }).appendTo('.subject');
-                });
-            }
-
-
-        });
-    });
-</script>
-
 <script>
     // Function to handle form submission
     function submitQuizForm() {
@@ -763,4 +661,220 @@
             });
     }
 </script>
+<!-- End Content-->
+<script type="text/javascript">
+    "use strict";
+
+    const faculty_id = @json($quizzes->faculty_id);
+        const subject_id = @json($quizzes->subject_id);
+        const program_id = @json($quizzes->program_id);
+        const session_id = @json($quizzes->session_id);
+        const section_id = @json($quizzes->section_id);
+        const semester_id = @json($quizzes->semester_id);
+    $(document).ready(function() {
+
+        if (faculty_id) {
+            setTimeout(function () {
+                $(".faculty").val(faculty_id).trigger('change'); // Triggers the change event
+                changeFaculty();
+            }, 500);
+        }
+
+    });
+
+    console.log(program_id)
+    $(".faculty").on('change', changeFaculty());
+    function changeFaculty(){
+        console.log(program_id)
+        // e.preventDefault(e);
+        var program = $(".program");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('filter-program') }}",
+            data: {
+                _token: $('input[name=_token]').val(),
+                faculty: $('.faculty').val()
+            },
+            success: function(response) {
+                // var jsonData=JSON.parse(response);
+                $('option', program).remove();
+                $('.program').append('<option value="">{{ __("select") }}</option>');
+                $.each(response, function() {
+                    $('<option/>', {
+                        'value': this.id,
+                        'text': this.title
+                    }).appendTo('.program');
+                });
+                if(program_id){
+                    setTimeout(function(){
+                        program.val(program_id).trigger('change');
+                        programChange()
+                    }, 500)
+                }
+            }
+
+        });
+    }
+
+    $(".program").on('change', function(e) {
+        // e.preventDefault(e);
+        programChange();
+        
+    });
+
+    function programChange(){
+        var session = $(".session");
+        var semester = $(".semester");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('filter-session') }}",
+            data: {
+                _token: $('input[name=_token]').val(),
+                program: $('.program').val()
+            },
+            success: function(response) {
+                // var jsonData=JSON.parse(response);
+                $('option', session).remove();
+                $('.session').append('<option value="">{{ __("select") }}</option>');
+                $.each(response, function() {
+                    $('<option/>', {
+                        'value': this.id,
+                        'text': this.title
+                    }).appendTo('.session');
+                });
+
+                if(session_id){
+                    setTimeout(function(){
+                        session.val(session_id).trigger('change');
+                        sessionChange()
+                    }, 500)
+                }
+            }
+
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('filter-semester') }}",
+            data: {
+                _token: $('input[name=_token]').val(),
+                program: $('.program').val()
+            },
+            success: function(response) {
+                // var jsonData=JSON.parse(response);
+                $('option', semester).remove();
+                $('.semester').append('<option value="0">{{ __("all") }}</option>');
+                $.each(response, function() {
+                    $('<option/>', {
+                        'value': this.id,
+                        'text': this.title
+                    }).appendTo('.semester');
+                });
+
+                if(semester_id){
+                    semester.val(semester_id).trigger('change');
+                    semesterChange()
+                }
+            }
+
+        });
+    }
+
+    $(".semester").on('change', function(e) {
+        // e.preventDefault(e);
+        semesterChange();
+    });
+    function semesterChange(){
+        var section = $(".section");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('filter-section') }}",
+            data: {
+                _token: $('input[name=_token]').val(),
+                semester: $('.semester').val(),
+                program: $('.program option:selected').val()
+            },
+            success: function(response) {
+
+                // var jsonData=JSON.parse(response);
+                $('option', section).remove();
+                $('.section').append('<option value="0">{{ __("all") }}</option>');
+                $.each(response, function() {
+                    $('<option/>', {
+                        'value': this.id,
+                        'text': this.title
+                    }).appendTo('.section');
+                });
+                if(section_id){
+                    section.val(section_id).trigger('change');
+                }
+            }
+
+        });
+    }
+
+    $(".session").on('change', function(e) {
+        // e.preventDefault(e);
+        sessionChange()
+    });
+
+    function sessionChange(){
+        var subject = $(".subject");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('filter-quiz-subject') }}",
+            data: {
+                _token: $('input[name=_token]').val(),
+                session: $('.session').val(),
+                program: $('.program option:selected').val()
+            },
+            success: function(response) {
+                console.log("Subjects", response);
+
+                // Check if the response contains an array of subjects inside another array
+                var subjects = response[0]; // Access the first array (which contains the subjects)
+
+                // Clear existing options
+                $('option', subject).remove();
+
+                // Append the default "select" option
+                $('.subject').append('<option value="">{{ __("select") }}</option>');
+
+                // Loop through each subject and append the options
+                $.each(subjects, function() {
+                    $('<option/>', {
+                        'value': this.id,
+                        'text': this.code + ' - ' + this.title
+                    }).appendTo('.subject');
+                });
+                if(subject_id){
+                    subject.val(subject_id).trigger('change')
+                }
+            }
+
+
+        });
+    }
+</script>
+
 @endsection
