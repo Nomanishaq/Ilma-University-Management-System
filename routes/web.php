@@ -66,6 +66,7 @@ Route::middleware(['XSS'])->group(function () {
     Route::post('filter-enroll-subject', 'FilterController@filterEnrollSubject')->name('filter-enroll-subject');
     Route::post('filter-student-subject', 'FilterController@filterStudentSubject')->name('filter-student-subject');
     Route::post('filter-techer-subject', 'FilterController@filterTecherSubject')->name('filter-techer-subject');
+    Route::post('filter-quiz-subject', 'FilterController@filterQuizSubject')->name('filter-quiz-subject');
     Route::post('filter-item', 'InventoryController@filterItem')->name('filter-item');
     Route::post('filter-quantity', 'InventoryController@filterQuantity')->name('filter-quantity');
     Route::post('filter-department', 'InventoryController@filterDepartment')->name('filter-department');
@@ -452,7 +453,10 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     // Question Bank Route
     Route::get('/questionbank', [QuestionBankController::class, 'index'])->name('questionbank.index');
     Route::get('/addquestionbank/{id}', [QuestionBankController::class, 'create'])->name('questionbank.create');
+    Route::get('/questionbank/print/{id}', [QuestionBankController::class, 'showprint'])->name('questionbank.showprint');
     Route::post('/quiz/store', [QuizController::class, 'store'])->name('quiz.store');
+    Route::post('/quiz/{id}/update', [QuizController::class, 'update'])->name('quiz.update');
+    Route::post('/save-quiz-questions', [QuizController::class, 'storeQuestions']);
     
 
     // Front Web Routes

@@ -156,4 +156,26 @@ class FilterController extends Controller
 
         return response()->json($subjects);
     }
+
+    public function filterQuizSubject(Request $request)
+    {
+        //
+        $data = $request->all();
+
+        // Access Data
+        $session = $data['session'];
+
+        $teacher_id = Auth::guard('web')->user()->id;
+        $user = User::where('id', $teacher_id)->where('status', '1');
+        $user->with('roles')->whereHas('roles', function ($query) {
+            $query->where('slug', 'super-admin');
+        });
+        $superAdmin = $user->first();
+
+        $rows = Subject::where('status', '1');
+        // Execute the query and get the results
+        $subjects = $rows->orderBy('code', 'asc')->get();
+
+        return response()->json([$subjects]);
+    }
 }

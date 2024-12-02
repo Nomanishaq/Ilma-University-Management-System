@@ -75,7 +75,7 @@
                                                 <i class="far fa-edit"></i>
                                             </a>
 
-                                            <a href="" class="btn btn-icon btn-primary btn-sm">
+                                            <a href="{{ route('admin.questionbank.showprint', ['id' => $quiz->id]) }}" class="btn btn-icon btn-primary btn-sm">
                                                 <i class="fas fa-print"></i>
                                             </a>
 
