@@ -59,7 +59,7 @@
 <body>
     <div class="header">
         <h1>{{ $quiz->title }}</h1>
-        <h2>{{ $quiz->exam_type }} Examinations {{ $quiz->session }}</h2>
+        <h2>{{ $quiz->exam_type }} Examinations {{ $quiz->session ? $quiz->session->title : '-' }}</h2>
     </div>
     <p class="note">Note: Attempt all questions. Do not write anything on the paper.</p>
 
