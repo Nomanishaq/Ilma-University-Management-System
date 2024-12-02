@@ -198,11 +198,13 @@
                                             <td>{{ $question->id }}</td>
                                             <td>{{ $question->question }}</td>
                                             <td>
-                                                <ul>
-                                                    @foreach (json_decode($question->options, true) as $key => $option)
-                                                        <li><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong> {{ $option }}</li>
-                                                    @endforeach
-                                                </ul>
+                                                @if($question->question_type === 'quiz_base')
+                                                    <ul>
+                                                        @foreach (json_decode($question->options, true) as $key => $option)
+                                                            <li><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong> {{ $option }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif 
                                             </td>
                                             <td>{{ $question->total_marks }}</td>
                                             <td>
@@ -651,6 +653,7 @@
             .then(data => {
                 if (data.success) {
                     alert('Questions saved successfully!');
+                    window.location.reload();
                 } else {
                     alert('Error saving questions!');
                 }
