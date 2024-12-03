@@ -148,6 +148,14 @@ class QuestionBankController extends Controller
             'questions'
         ])->findOrFail($id);
 
+        foreach ($quiz->questions as $question) {
+            $question->clo = json_decode($question->clo, true) ?? [];
+            $question->plo = json_decode($question->plo, true) ?? [];
+            $question->cognitive = json_decode($question->cognitive, true) ?? [];
+            $question->psychomotor = json_decode($question->psychomotor, true) ?? [];
+            $question->affective = json_decode($question->affective, true) ?? [];
+        }
+
         // Pass the data to the view
         return view('admin.questionbank.show', compact('quiz'));
     }

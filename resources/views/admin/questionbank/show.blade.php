@@ -169,12 +169,12 @@
                 </td>
                 <td class="text-center">{{ $question['total_marks'] }}</td>
                 <td class="obe-attainment text-center">
-                    <p>CLO: {{ $question['clo'] ?? 'N/A' }}</p>
-                    <p>PLO: {{ $question['plo'] ?? 'N/A' }}</p>
+                    <p>CLO: {{ isset($question['clo']) ? implode(', ', $question['clo']) : 'N/A' }}</p>
+                    <p>PLO: {{ isset($question['plo']) ? implode(', ', $question['plo']) : 'N/A' }}</p>
                     <p>Domains:
-                        Cognitive ({{ $question['cognitive'] ?? 'N/A' }}),
-                        Psychomotor ({{ $question['psychomotor'] ?? 'N/A' }}),
-                        Affective ({{ $question['affective'] ?? 'N/A' }})
+                        Cognitive {{ isset($question['cognitive']) ? implode(', ', $question['cognitive']) : 'N/A' }},
+                        Psychomotor {{ isset($question['psychomotor']) ? implode(', ', $question['psychomotor']) : 'N/A' }},
+                        Affective {{ isset($question['affective']) ? implode(', ', $question['affective']) : 'N/A' }}
                     </p>
                 </td>
             </tr>
