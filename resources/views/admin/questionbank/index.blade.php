@@ -76,14 +76,14 @@
                                         </a>
 
 
-                                        <a href="/admin/questionbank/print/{{ $quiz->id }}" class="btn btn-icon btn-primary btn-sm">
+                                        <a href="/admin/questionbank/print/{{ $quiz->id }}" target="_blank" class="btn btn-icon btn-primary btn-sm">
                                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                         </a>
 
-                                        <a data-quiz-id="{{ $quiz->id }}"
+                                        <!-- <a data-quiz-id="{{ $quiz->id }}"
                                             class="btn btn-icon btn-primary btn-sm generate-pdf">
                                             <i class="fas fa-print"></i>
-                                        </a>
+                                        </a> -->
 
                                         <button type="button" class="btn btn-icon btn-danger btn-sm"
                                             data-bs-toggle="modal"

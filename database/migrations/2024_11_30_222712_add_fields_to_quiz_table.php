@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('section_id')->nullable();
 
             $table->string('teacher')->nullable();
-            $table->integer('exam_time')->nullable();
+            $table->string('exam_time')->nullable();
             $table->enum('exam_type', ['quiz', 'mid_term', 'final_term', 'assignment', 'class_participation'])->nullable();
             $table->enum('quiz_type', ['quiz_1', 'quiz_2'])->nullable();
 

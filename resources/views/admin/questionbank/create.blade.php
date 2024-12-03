@@ -132,8 +132,8 @@
 
 
                                 <div class="form-group col-md-4">
-                                    <label for="title">Exam Hours<span>*</span></label>
-                                    <input type="number" class="form-control" name="exam_time" value="{{ $quizzes->exam_time }}" id="exam_time" required />
+                                    <label for="title">Exam Time<span>*</span></label>
+                                    <input type="text" class="form-control" name="exam_time" value="{{ $quizzes->exam_time }}" id="exam_time" required />
                                     <div class="invalid-feedback">
                                         {{ __('required_field') }} {{ __('    ') }}
                                     </div>
@@ -879,6 +879,12 @@
 
         });
     }
+
+
+    
+
 </script>
+
+
 
 @endsection

@@ -39,7 +39,7 @@ class QuizController extends Controller
             'section_id'   => 'nullable|exists:sections,id',
             'subject_id'   => 'nullable|exists:subjects,id',
             'teacher'      => 'nullable|string|max:255',
-            'exam_time'    => 'nullable|integer|min:1',
+            'exam_time'    => 'nullable|string|max:255',
             'exam_type'    => 'nullable|in:quiz,mid_term,final_term,assignment,class_participation',
             'quiz_type'    => 'nullable|in:quiz_1,quiz_2',
         ]);
