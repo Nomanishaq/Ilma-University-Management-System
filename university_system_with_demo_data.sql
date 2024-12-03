@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 10:37 PM
+-- Generation Time: Dec 03, 2024 at 07:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -213,10 +213,7 @@ CREATE TABLE `batches` (
 
 INSERT INTO `batches` (`id`, `title`, `start_date`, `status`, `created_at`, `updated_at`) VALUES
 (1, '1st Batch', '2018-10-01', 1, '2022-09-30 13:02:48', '2022-09-30 13:02:48'),
-(2, '2nd Batch', '2019-10-01', 1, '2022-09-30 13:03:01', '2022-09-30 13:03:01'),
-(3, '3rd Batch', '2020-10-01', 1, '2022-09-30 13:03:23', '2022-09-30 13:03:23'),
-(4, '4th Batch', '2021-10-01', 1, '2022-09-30 13:03:38', '2022-09-30 13:03:38'),
-(5, '5th Batch', '2022-10-01', 1, '2022-09-30 13:03:56', '2022-09-30 13:03:56');
+(2, '2nd Batch', '2019-10-01', 1, '2022-09-30 13:03:01', '2022-09-30 13:03:01');
 
 -- --------------------------------------------------------
 
@@ -234,11 +231,22 @@ CREATE TABLE `batch_program` (
 --
 
 INSERT INTO `batch_program` (`batch_id`, `program_id`) VALUES
-(5, 11),
-(4, 10),
-(3, 12),
 (2, 13),
-(1, 17);
+(1, 17),
+(2, 11),
+(2, 10),
+(2, 12),
+(2, 15),
+(2, 14),
+(2, 17),
+(2, 16),
+(1, 11),
+(1, 10),
+(1, 12),
+(1, 13),
+(1, 15),
+(1, 14),
+(1, 16);
 
 -- --------------------------------------------------------
 
@@ -495,7 +503,12 @@ CREATE TABLE `class_routines` (
 
 INSERT INTO `class_routines` (`id`, `teacher_id`, `subject_id`, `room_id`, `session_id`, `program_id`, `semester_id`, `section_id`, `start_time`, `end_time`, `day`, `status`, `created_at`, `updated_at`) VALUES
 (37, 10, 18, 1, 4, 10, 1, 1, '11:00:00', '12:00:00', 1, 1, '2024-11-26 18:24:29', '2024-11-26 18:24:29'),
-(38, 10, 18, 2, 4, 10, 1, 1, '13:55:00', '15:00:00', 3, 1, '2024-11-26 18:25:07', '2024-11-26 18:25:07');
+(38, 10, 18, 2, 4, 10, 1, 1, '13:55:00', '15:00:00', 3, 1, '2024-11-26 18:25:07', '2024-11-26 18:25:07'),
+(39, 11, 18, 1, 4, 10, 1, 1, '13:00:00', '14:00:00', 4, 1, '2024-12-02 21:26:37', '2024-12-02 21:26:37'),
+(40, 11, 16, 1, 4, 10, 1, 1, '12:00:00', '13:00:00', 6, 1, '2024-12-02 21:27:37', '2024-12-02 21:27:37'),
+(41, 10, 55, 5, 4, 17, 2, 4, '12:30:00', '13:31:00', 1, 1, '2024-12-02 21:31:14', '2024-12-02 21:31:14'),
+(42, 10, 57, 4, 4, 17, 2, 4, '17:00:00', '19:31:00', 3, 1, '2024-12-02 21:31:50', '2024-12-02 21:31:50'),
+(43, 10, 60, 2, 4, 17, 2, 4, '19:32:00', '08:32:00', 4, 1, '2024-12-02 21:32:39', '2024-12-02 21:32:39');
 
 -- --------------------------------------------------------
 
@@ -981,7 +994,14 @@ CREATE TABLE `enroll_subjects` (
 --
 
 INSERT INTO `enroll_subjects` (`id`, `program_id`, `semester_id`, `section_id`, `status`, `created_at`, `updated_at`) VALUES
-(9, 10, 1, 1, 1, '2024-11-26 18:21:01', '2024-11-26 18:21:01');
+(9, 10, 1, 1, 1, '2024-11-26 18:21:01', '2024-12-02 04:36:35'),
+(11, 11, 1, 1, 1, '2024-12-02 04:37:36', '2024-12-02 04:37:36'),
+(12, 12, 2, 1, 1, '2024-12-02 04:38:18', '2024-12-02 04:38:18'),
+(13, 13, 3, 1, 1, '2024-12-02 04:38:54', '2024-12-02 04:38:54'),
+(14, 14, 3, 1, 1, '2024-12-02 04:39:45', '2024-12-02 04:39:45'),
+(15, 15, 1, 4, 1, '2024-12-02 04:40:20', '2024-12-02 04:42:26'),
+(16, 17, 2, 4, 1, '2024-12-02 04:42:16', '2024-12-02 04:42:16'),
+(17, 16, 3, 4, 1, '2024-12-02 04:42:57', '2024-12-02 04:42:57');
 
 -- --------------------------------------------------------
 
@@ -999,7 +1019,52 @@ CREATE TABLE `enroll_subject_subject` (
 --
 
 INSERT INTO `enroll_subject_subject` (`enroll_subject_id`, `subject_id`) VALUES
-(9, 18);
+(9, 18),
+(9, 19),
+(9, 16),
+(9, 14),
+(9, 15),
+(9, 17),
+(11, 21),
+(11, 24),
+(11, 20),
+(11, 22),
+(11, 23),
+(12, 28),
+(12, 29),
+(12, 27),
+(12, 25),
+(12, 26),
+(12, 30),
+(13, 34),
+(13, 36),
+(13, 35),
+(13, 31),
+(13, 33),
+(13, 32),
+(14, 37),
+(14, 38),
+(14, 42),
+(14, 39),
+(14, 41),
+(14, 40),
+(15, 48),
+(15, 46),
+(15, 44),
+(15, 47),
+(15, 45),
+(16, 55),
+(16, 58),
+(16, 60),
+(16, 56),
+(16, 57),
+(16, 59),
+(17, 52),
+(17, 50),
+(17, 51),
+(17, 49),
+(17, 53),
+(17, 54);
 
 -- --------------------------------------------------------
 
@@ -2544,7 +2609,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (144, '2024_11_26_231422_create_quiz', 4),
 (145, '2024_11_27_041326_create_quiz_banks_table', 4),
 (146, '2024_11_26_231732_quiz', 5),
-(147, '2024_11_26_231843_create_quiz', 6);
+(147, '2024_11_26_231843_create_quiz', 6),
+(148, '2024_11_30_195200_alter_quiz_table_add_title_column', 7),
+(149, '2024_11_30_213744_create_quiz_questions_table', 7),
+(150, '2024_11_30_220547_create_quiz_details_table', 7),
+(151, '2024_11_30_222712_add_fields_to_quiz_table', 7);
 
 -- --------------------------------------------------------
 
@@ -2576,7 +2645,8 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 1),
-(6, 'App\\User', 10);
+(6, 'App\\User', 10),
+(6, 'App\\User', 11);
 
 -- --------------------------------------------------------
 
@@ -3616,22 +3686,27 @@ INSERT INTO `program_semester` (`program_id`, `semester_id`) VALUES
 (10, 1),
 (12, 2),
 (15, 3),
-(13, 4),
-(15, 5),
-(14, 6),
-(13, 7),
-(17, 8),
-(13, 9),
-(16, 10),
 (13, 2),
 (15, 2),
 (14, 2),
-(11, 4),
-(10, 4),
-(12, 4),
-(14, 5),
-(17, 5),
-(16, 5);
+(11, 1),
+(12, 1),
+(13, 1),
+(15, 1),
+(14, 1),
+(17, 1),
+(16, 1),
+(11, 2),
+(10, 2),
+(17, 2),
+(16, 2),
+(11, 3),
+(10, 3),
+(12, 3),
+(13, 3),
+(14, 3),
+(17, 3),
+(16, 3);
 
 -- --------------------------------------------------------
 
@@ -3653,16 +3728,54 @@ CREATE TABLE `program_semester_sections` (
 --
 
 INSERT INTO `program_semester_sections` (`id`, `program_id`, `semester_id`, `section_id`, `created_at`, `updated_at`) VALUES
-(180, 10, 1, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(181, 12, 2, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(182, 13, 4, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(183, 13, 7, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(184, 13, 9, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(185, 15, 3, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(186, 15, 5, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(187, 14, 6, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(188, 17, 8, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12'),
-(189, 16, 10, 1, '2024-11-28 08:36:12', '2024-11-28 08:36:12');
+(190, 11, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(191, 11, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(192, 11, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(193, 10, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(194, 10, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(195, 10, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(196, 12, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(197, 12, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(198, 12, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(199, 13, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(200, 13, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(201, 13, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(202, 15, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(203, 15, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(204, 15, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(205, 14, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(206, 14, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(207, 14, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(208, 17, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(209, 17, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(210, 17, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(211, 16, 1, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(212, 16, 2, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(213, 16, 3, 1, '2024-12-02 03:43:11', '2024-12-02 03:43:11'),
+(214, 11, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(215, 11, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(216, 11, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(217, 10, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(218, 10, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(219, 10, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(220, 12, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(221, 12, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(222, 12, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(223, 13, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(224, 13, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(225, 13, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(226, 15, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(227, 15, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(228, 15, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(229, 14, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(230, 14, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(231, 14, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(232, 17, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(233, 17, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(234, 17, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(235, 16, 1, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(236, 16, 2, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24'),
+(237, 16, 3, 4, '2024-12-02 03:43:24', '2024-12-02 03:43:24');
 
 -- --------------------------------------------------------
 
@@ -3701,7 +3814,9 @@ INSERT INTO `program_session` (`program_id`, `session_id`) VALUES
 (12, 2),
 (13, 2),
 (15, 2),
-(14, 2);
+(14, 2),
+(17, 2),
+(16, 2);
 
 -- --------------------------------------------------------
 
@@ -3793,22 +3908,87 @@ INSERT INTO `provinces` (`id`, `title`, `slug`, `description`, `status`, `create
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quizzes`
+-- Table structure for table `quiz`
 --
 
-CREATE TABLE `quizzes` (
+CREATE TABLE `quiz` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(225) NOT NULL,
+  `title` varchar(191) DEFAULT NULL COMMENT 'Title of the quiz',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `faculty_id` int(10) UNSIGNED DEFAULT NULL,
+  `program_id` int(10) UNSIGNED DEFAULT NULL,
+  `session_id` int(10) UNSIGNED DEFAULT NULL,
+  `semester_id` int(10) UNSIGNED DEFAULT NULL,
+  `section_id` int(10) UNSIGNED DEFAULT NULL,
+  `teacher` varchar(191) DEFAULT NULL,
+  `exam_time` varchar(50) DEFAULT NULL,
+  `exam_type` enum('quiz','mid_term','final_term','assignment','class_participation') DEFAULT NULL,
+  `quiz_type` enum('quiz_1','quiz_2') DEFAULT NULL,
+  `subject_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quiz`
+--
+
+INSERT INTO `quiz` (`id`, `title`, `created_at`, `updated_at`, `faculty_id`, `program_id`, `session_id`, `semester_id`, `section_id`, `teacher`, `exam_time`, `exam_type`, `quiz_type`, `subject_id`) VALUES
+(12, 'Software Engineering MID TERM EXAMINATIONS FALL 2024', '2024-12-02 18:48:04', '2024-12-02 19:35:51', 2, 10, 4, 1, 1, 'Super Admin', '40 Minutes', 'mid_term', NULL, 38);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_details`
+--
+
+CREATE TABLE `quiz_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `quiz_id` bigint(20) UNSIGNED NOT NULL,
+  `faculty` bigint(20) UNSIGNED NOT NULL,
+  `program` bigint(20) UNSIGNED NOT NULL,
+  `session` bigint(20) UNSIGNED NOT NULL,
+  `semester` bigint(20) UNSIGNED NOT NULL,
+  `section` bigint(20) UNSIGNED NOT NULL,
+  `course` bigint(20) UNSIGNED NOT NULL,
+  `teacher` bigint(20) UNSIGNED NOT NULL,
+  `exam_hours` bigint(20) UNSIGNED NOT NULL,
+  `exam_type` bigint(20) UNSIGNED NOT NULL,
+  `quiz_type` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_questions`
+--
+
+CREATE TABLE `quiz_questions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `quiz_id` bigint(20) UNSIGNED NOT NULL,
+  `question_type` varchar(191) NOT NULL,
+  `question` varchar(191) DEFAULT NULL,
+  `options` varchar(191) DEFAULT NULL,
+  `clo` varchar(191) DEFAULT NULL,
+  `plo` varchar(191) DEFAULT NULL,
+  `total_marks` int(11) DEFAULT NULL,
+  `cognitive` varchar(191) DEFAULT NULL,
+  `psychomotor` varchar(191) DEFAULT NULL,
+  `affective` varchar(191) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `quizzes`
+-- Dumping data for table `quiz_questions`
 --
 
-INSERT INTO `quizzes` (`id`, `title`, `created_at`, `updated_at`) VALUES
-(1, 'Exam', '2024-11-29 12:09:24', '2024-11-29 12:09:24');
+INSERT INTO `quiz_questions` (`id`, `quiz_id`, `question_type`, `question`, `options`, `clo`, `plo`, `total_marks`, `cognitive`, `psychomotor`, `affective`, `created_at`, `updated_at`) VALUES
+(16, 12, 'question_base', 'Describe the costs and benefits of formal methods', NULL, 'CLO2', 'PLO3', 5, 'C2', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
+(17, 12, 'question_base', 'Construct formal models of sequential software systems', NULL, 'CLO3', 'PLO8', 5, 'C3', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
+(18, 12, 'question_base', 'Implement sequential software systems based on formal models', NULL, 'CLO7', 'PLO9', 5, 'C3', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
+(20, 12, 'quiz_base', 'Describe the costs and benefits of formal methods', '{\"option_a\":\"option 1\",\"option_b\":\"option 2\",\"option_c\":\"option 3\",\"option_d\":\"option 4\"}', 'CLO10', 'PLO8', 5, 'C3', 'P2', 'A2', '2024-12-02 19:14:35', '2024-12-02 19:14:35');
 
 -- --------------------------------------------------------
 
@@ -4645,7 +4825,8 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `title`, `seat`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Section A', NULL, 1, '2022-09-30 13:27:34', '2022-09-30 13:28:09');
+(1, 'Section A', NULL, 1, '2022-09-30 13:27:34', '2022-09-30 13:28:09'),
+(4, 'Section B', NULL, 1, '2024-12-02 03:43:23', '2024-12-02 03:43:23');
 
 -- --------------------------------------------------------
 
@@ -4669,14 +4850,7 @@ CREATE TABLE `semesters` (
 INSERT INTO `semesters` (`id`, `title`, `year`, `status`, `created_at`, `updated_at`) VALUES
 (1, '1st Semester', '1', 1, '2022-09-30 13:22:04', '2022-09-30 13:22:04'),
 (2, '2nd Semester', '1', 1, '2022-09-30 13:22:18', '2022-09-30 13:22:18'),
-(3, '3rd Semester', '2', 1, '2022-09-30 13:22:32', '2022-09-30 13:22:32'),
-(4, '4th Semester', '2', 1, '2022-09-30 13:22:48', '2022-09-30 13:22:48'),
-(5, '5th Semester', '3', 1, '2022-09-30 13:23:03', '2022-09-30 13:23:03'),
-(6, '6th Semester', '3', 1, '2022-09-30 13:23:13', '2022-09-30 13:23:13'),
-(7, '7th Semester', '4', 1, '2022-09-30 13:23:24', '2022-09-30 13:23:24'),
-(8, '8th Semester', '4', 1, '2022-09-30 13:23:32', '2022-09-30 13:23:32'),
-(9, '9th Semester', '5', 1, '2022-09-30 13:24:02', '2022-09-30 13:24:02'),
-(10, '10th Semester', '5', 1, '2022-09-30 13:24:55', '2022-09-30 13:24:55');
+(3, '3rd Semester', '2', 1, '2022-09-30 13:22:32', '2022-09-30 13:22:32');
 
 -- --------------------------------------------------------
 
@@ -4915,8 +5089,10 @@ CREATE TABLE `status_type_student` (
 --
 
 INSERT INTO `status_type_student` (`status_type_id`, `student_id`) VALUES
-(2, 14),
-(2, 15);
+(2, 15),
+(2, 16),
+(2, 17),
+(2, 18);
 
 -- --------------------------------------------------------
 
@@ -4991,8 +5167,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `student_id`, `registration_no`, `batch_id`, `program_id`, `admission_date`, `first_name`, `last_name`, `father_name`, `mother_name`, `email`, `email_verified_at`, `password`, `password_text`, `present_province`, `present_district`, `present_village`, `present_address`, `permanent_province`, `permanent_district`, `permanent_village`, `permanent_address`, `gender`, `dob`, `phone`, `emergency_phone`, `mother_tongue`, `marital_status`, `blood_group`, `nationality`, `national_id`, `passport_no`, `school_name`, `school_exam_id`, `school_graduation_year`, `school_graduation_point`, `collage_name`, `collage_exam_id`, `collage_graduation_year`, `collage_graduation_point`, `photo`, `signature`, `login`, `status`, `is_transfer`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `father_occupation`, `mother_occupation`, `father_photo`, `mother_photo`, `country`, `religion`, `caste`, `school_graduation_field`, `collage_graduation_field`) VALUES
-(14, '1014', NULL, 4, 3, '2022-10-04', 'Aliza', 'Imran', 'Imran', NULL, 'aliza@mail.com', NULL, '$2y$10$w1EvewUc/eIMORYxN2vNHeJzK5.UXu3PIbFZQvWyIvRANrnBbO6rC', 'eyJpdiI6IllWcUtFdm1JYXJzTkJOTWtsWXhXYkE9PSIsInZhbHVlIjoiWFVDQmp3dzRUNlYxdGYzdzZGYlp6UT09IiwibWFjIjoiNWE1OTFiZDY5ODI3MDc1MGRkNjZmMzI2NWY2N2I4Mjg0MzA5OTY5NmI3MTE2MjkwODM2YjNhMjc3YTQ5ODFlMyIsInRhZyI6IiJ9', 4, 4, NULL, 'Dha phase 6', 4, 4, NULL, 'Dha phase 6', 3, '2000-03-25', '03002994166', NULL, NULL, 1, 1, NULL, '245878743443', '215678754354', 'City', '78545487', '2025', '96', 'Green Belt', '159887845', '2021', '78', '1730641343_messages_1_1732613945.jpg', NULL, 1, 1, 0, 'u87e43VuLquqAYGTFDGaNodm5Rqzp0Edls4xWMCJ5HRpoTomVdcdHqEyD4oQ', 1, 10, '2022-10-04 06:00:07', '2024-11-26 09:51:15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, '001', NULL, 4, 10, '2024-11-27', 'Hamza', 'Imran', 'Imran', NULL, 'hamza@mail.com', NULL, '$2y$10$2VaeYocswGXa69EoGPcxku5c7RxL9f3klkC8BIZ2sn6BeHUo.B6Em', 'eyJpdiI6IkxmTk14TTZjelI1OS8yYnVyaDBQZ3c9PSIsInZhbHVlIjoiNTg5UEJIREJ5QS9xVnNaNUVGUnVIZz09IiwibWFjIjoiMzI3M2FiYTAwYTE3YTIwYWYzNjc3ZDAzM2Q4MzI2NGUzMWU1NWFjZTVmMzA0Yjk0MjEyMGUwMDBlNjMyNzEyMSIsInRhZyI6IiJ9', 4, 4, NULL, 'Dha phase 6', 4, 4, NULL, 'Dha phase 6', 1, '2000-11-01', '030000000000', NULL, NULL, 1, 1, NULL, '4230171983973', '215678754354', 'City', NULL, '2018', '3.7', 'Islamia Collage', NULL, '2020', '3.8', 'images_1732650376.jpeg', NULL, 1, 1, 0, NULL, 1, NULL, '2024-11-26 19:46:16', '2024-11-26 19:46:16', 'Business', NULL, NULL, NULL, NULL, 'Islam', NULL, NULL, NULL);
+(15, '001', NULL, 1, 10, '2021-11-27', 'Aliza', 'Imran', 'Imran', NULL, 'aliza@mail.com', NULL, '$2y$10$2VaeYocswGXa69EoGPcxku5c7RxL9f3klkC8BIZ2sn6BeHUo.B6Em', 'eyJpdiI6IkxmTk14TTZjelI1OS8yYnVyaDBQZ3c9PSIsInZhbHVlIjoiNTg5UEJIREJ5QS9xVnNaNUVGUnVIZz09IiwibWFjIjoiMzI3M2FiYTAwYTE3YTIwYWYzNjc3ZDAzM2Q4MzI2NGUzMWU1NWFjZTVmMzA0Yjk0MjEyMGUwMDBlNjMyNzEyMSIsInRhZyI6IiJ9', 4, 4, NULL, 'Dha phase 6', 4, 4, NULL, 'Dha phase 6', 2, '2000-11-01', '0300000000', NULL, NULL, NULL, NULL, NULL, '4230171983922', '215678754354', 'City', NULL, '2018', '3.7', 'Islamia Collage', NULL, '2020', '3.8', 'aliza_1733132719.jpeg', NULL, 1, 1, 0, NULL, 1, 1, '2024-11-26 19:46:16', '2024-12-02 04:45:36', 'Business', NULL, NULL, NULL, NULL, 'Islam', NULL, NULL, NULL),
+(16, '002', NULL, 1, 10, '2021-12-14', 'Ayesha', 'Rahim', 'Rahim', NULL, 'ayesharahim@mail.com', NULL, '$2y$10$wu7CGF9hY4RmATEvqFcQ8eFRhnGKwFG5KNTFpInjPzzeIEOfMhX1y', 'eyJpdiI6IkF1dXVjaFAreURvdThYR1EwamhJTGc9PSIsInZhbHVlIjoiZGFHL0dCalFZVGVtam1kTjBEeTFwQT09IiwibWFjIjoiNzE1YzIxNzQ5NGQwNmNlM2JiMjE1OTRhNmYwMzM4NTU4MGJlN2JlMWI2NThjMDFmZDg5ZjA5YWIxYmIyN2QzZCIsInRhZyI6IiJ9', 4, 4, NULL, NULL, 4, 4, NULL, NULL, 2, '2021-12-07', '0300000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'istockphoto_538650431_612x612_1733135599.jpg', NULL, 1, 1, 0, NULL, 1, NULL, '2024-12-02 05:33:19', '2024-12-02 05:33:19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '003', NULL, 1, 10, '2021-12-08', 'Shanzay', 'Shoukat', NULL, NULL, 'shanzayshoukat@mail.com', NULL, '$2y$10$8iS2TM4i7nNIChvP2sW/Du0ewqOO38jcOHQWIejHGl5Nn/UtaHpjO', 'eyJpdiI6IjhjMEtNSTBNMWw0bHZDaE5YTjdGd2c9PSIsInZhbHVlIjoiOXJYcmdTYno0TzZDNzJUeStHWURnZz09IiwibWFjIjoiOWEzNDI1ZTc2MzFkN2M4YjE2MDczNzZlYTFhODU1OGQ0ZDA1MTg2NDY4MTU4NGNlOGFlMjQ3MTM3MjA4MDhlYSIsInRhZyI6IiJ9', 4, 4, NULL, NULL, 4, 4, NULL, NULL, 2, '2000-12-02', '0300000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ai_generated_asian_young_woman_in_graduation_cap_and_gown_with_smile_photo_1733136965.jpg', NULL, 1, 1, 0, NULL, 1, NULL, '2024-12-02 05:56:06', '2024-12-02 05:56:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, '004', NULL, 1, 10, '2021-12-01', 'Laraib', 'khan', NULL, NULL, 'laraibkhan@mail.com', NULL, '$2y$10$F4a8RTLPtjwnF27y9/QkdOkogpzj8nYdi1FMboOL0rWFzUGDyAh7q', 'eyJpdiI6IlFlOVU0Y1Izbkk0SUplRHlwdmltU3c9PSIsInZhbHVlIjoiWlBpM1VoaEQ4a2pzS3kzUzl2dm9qZz09IiwibWFjIjoiNmZlM2YxM2EyOGU4MTg4NmY5ZmU1N2UzM2ExMjc2YjcxZGE4OGY0MzI1Y2MyNTg4YzkzNDAzZGFmMWQxOGMxOSIsInRhZyI6IiJ9', 4, 4, NULL, NULL, 4, 4, NULL, NULL, 1, '2002-12-02', '0300000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'istockphoto_1444077739_612x612_1733137314.jpg', NULL, 1, 1, 0, NULL, 1, NULL, '2024-12-02 06:01:55', '2024-12-02 06:01:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5073,7 +5251,10 @@ CREATE TABLE `student_enrolls` (
 --
 
 INSERT INTO `student_enrolls` (`id`, `student_id`, `program_id`, `session_id`, `semester_id`, `section_id`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(19, 15, 10, 4, 1, 1, 1, 1, NULL, '2024-11-26 19:46:16', '2024-11-26 19:46:16');
+(19, 15, 10, 4, 1, 1, 1, 1, NULL, '2024-11-26 19:46:16', '2024-11-26 19:46:16'),
+(20, 16, 10, 4, 3, 1, 1, 1, NULL, '2024-12-02 05:33:19', '2024-12-02 05:33:19'),
+(21, 17, 10, 4, 2, 1, 1, 1, NULL, '2024-12-02 05:56:06', '2024-12-02 05:56:06'),
+(22, 18, 10, 4, 1, 1, 1, 1, NULL, '2024-12-02 06:01:55', '2024-12-02 06:01:55');
 
 -- --------------------------------------------------------
 
@@ -5091,7 +5272,13 @@ CREATE TABLE `student_enroll_subject` (
 --
 
 INSERT INTO `student_enroll_subject` (`student_enroll_id`, `subject_id`) VALUES
-(19, 18);
+(19, 18),
+(22, 18),
+(22, 19),
+(22, 16),
+(22, 14),
+(22, 15),
+(22, 17);
 
 -- --------------------------------------------------------
 
@@ -5114,13 +5301,6 @@ CREATE TABLE `student_leaves` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `student_leaves`
---
-
-INSERT INTO `student_leaves` (`id`, `student_id`, `review_by`, `apply_date`, `from_date`, `to_date`, `subject`, `reason`, `attach`, `note`, `status`, `created_at`, `updated_at`) VALUES
-(1, 14, 1, '2022-10-04', '2022-10-04', '2022-10-07', 'Sudden Headache', 'A thunderclap headache is an extremely severe headache that comes on rapidly. It\'s sometimes called a lone acute headache. It develops in 60 seconds or less and causes intense pain. Thunderclap headaches can be caused by bleeding in the brain after an arterial aneurysm rupture, stroke, or other injury.', 'background-border_1664887696.png', NULL, 1, '2022-10-04 06:48:16', '2022-10-04 06:48:43');
 
 -- --------------------------------------------------------
 
@@ -5147,8 +5327,10 @@ CREATE TABLE `student_relatives` (
 --
 
 INSERT INTO `student_relatives` (`id`, `student_id`, `relation`, `name`, `occupation`, `email`, `phone`, `created_at`, `updated_at`, `address`, `photo`) VALUES
-(20, 14, 'Father', 'Imran', 'Bussiness', NULL, '03002994166', '2024-11-26 09:51:15', '2024-11-26 09:51:15', 'DHA Phase 6', NULL),
-(21, 15, 'Father', 'Imran', 'Bussiness', NULL, '0330000000000', '2024-11-26 19:46:16', '2024-11-26 19:46:16', 'DHA Phase 6', NULL);
+(23, 15, 'Father', 'Imran', 'Bussiness', NULL, '0330000000000', '2024-12-02 04:45:36', '2024-12-02 04:45:36', 'DHA Phase 6', NULL),
+(24, 16, 'Father', 'Rahim', 'Bussiness', NULL, '0330000000', '2024-12-02 05:33:19', '2024-12-02 05:33:19', 'Karachi', NULL),
+(25, 17, 'Father', 'Shoukat', 'Bussiness', NULL, '03300000000', '2024-12-02 05:56:06', '2024-12-02 05:56:06', 'Karachi', NULL),
+(26, 18, 'Father', 'Muhammad Khan', 'Bussiness', NULL, '03300000000', '2024-12-02 06:01:55', '2024-12-02 06:01:55', 'Karachi', NULL);
 
 -- --------------------------------------------------------
 
@@ -5670,8 +5852,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `staff_id`, `department_id`, `designation_id`, `first_name`, `last_name`, `father_name`, `mother_name`, `email`, `email_verified_at`, `password`, `password_text`, `gender`, `dob`, `joining_date`, `ending_date`, `phone`, `emergency_phone`, `mother_tongue`, `marital_status`, `blood_group`, `nationality`, `national_id`, `passport_no`, `present_province`, `present_district`, `present_village`, `present_address`, `permanent_province`, `permanent_district`, `permanent_village`, `permanent_address`, `education_level`, `graduation_academy`, `year_of_graduation`, `graduation_field`, `experience`, `note`, `basic_salary`, `contract_type`, `work_shift`, `salary_type`, `bank_account_name`, `bank_account_no`, `bank_name`, `ifsc_code`, `bank_brach`, `tin_no`, `photo`, `signature`, `resume`, `joining_letter`, `is_admin`, `login`, `status`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `religion`, `caste`, `country`, `epf_no`) VALUES
-(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'smpVzUAXKbsrJxXrEp98HRlNmJd1j9KAmiJRjP7Sja9mi35ckKOunB3OLGxz', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
-(10, '110', 5, 1, 'Noman', 'Ishaq', 'Muhammad Ishaq', NULL, 'nomanishaq241@gmail.com', NULL, '$2y$10$Mdg3Mp5JVc92aDmwjlI1/eI0OrUuCiRyZOCLCwmKWdmdruGZGKdAC', 'eyJpdiI6IiszUlJpc0diRFRFTHRNckQzVWI2VWc9PSIsInZhbHVlIjoicFlleXF6Nm14OXdPL0dzczM4aTlzZz09IiwibWFjIjoiY2FjNjk5YzQ4ZmViOWY1ZjlhYjBmYzc5NWI2YWU2MzcwOWM0MzhlNGRkMmU1YjJhNjMyYThjZWM0NTBiMjBmMCIsInRhZyI6IiJ9', 1, '2000-10-30', '2020-10-31', NULL, '0309 3672516', '03002084200', NULL, 1, 7, NULL, '4230171983973', NULL, 0, NULL, NULL, NULL, 0, 0, NULL, NULL, 'BS', 'Virutal Univeristy', '2021', 'Computer Science', '5 Year Experience', NULL, 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'noman_ishaq_1732562494.jpg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, NULL, '2024-11-25 19:21:34', '2024-11-25 19:22:06', NULL, NULL, NULL, NULL);
+(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'pvDzclRnLmwUUryVN4lgMeDfPDlvCLQJoRmVVg6cesT1Z4BFuT4H7zacnjkJ', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
+(10, '110', 5, 3, 'Adnan', 'kaim khani', NULL, NULL, 'adnankaimkhani@mail.com', NULL, '$2y$10$xr6Mnce7WMM5EomgB1x2mOtYIZYZkPi8.MCnWqR.hLU/.KxFp2stq', 'eyJpdiI6IkJsTXJuSU5YbWwvL2ZLOFBIYksvdEE9PSIsInZhbHVlIjoiOVJYUCtJd3dmQUVNTVM0Q3U5bDg3TGxOdk5tenQvaWFmdXp6S3pRWVRHTT0iLCJtYWMiOiI2MGNiZGI2YmRjNDcxYWE2MWFmY2FiMzVkMDFhODJkOTg3NDA3MWZiZjhiNDdkMmM5NjUzOGEyNjhlNTUzNjI3IiwidGFnIjoiIn0=', 1, '1986-10-15', '2020-10-31', NULL, '03000000000', NULL, NULL, 1, 7, NULL, '4230171983973', NULL, 4, 4, NULL, NULL, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, '5 Year Experience', NULL, 150000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'teacher_1733132991.jpeg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, 1, '2024-11-25 19:21:34', '2024-12-02 05:22:39', NULL, NULL, NULL, NULL),
+(11, '1002', 5, 3, 'Zahid', 'Ali', NULL, NULL, 'zahidali@mail.com', NULL, '$2y$10$QThH6McZpO3UAPMXRvTR/umyVqkE9.FuWHtFg/GzmifJIjpZcmTg.', 'eyJpdiI6IlpaQ2NPQjQ2WWZycWRabmJ1L1BiZ3c9PSIsInZhbHVlIjoiNUMyajFDVzl0eEtybkppMVF0TmdxZz09IiwibWFjIjoiYTZlZjkyYTg4ZDYzMGM3NjA4MzM3YzMxYjFkYzI2M2I4NGY1OWFiNGM4MjAyY2ZhOGEzYjBmMjZiNmVlZmU3OSIsInRhZyI6IiJ9', 1, '1988-12-14', NULL, NULL, '03000000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 4, NULL, NULL, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 120000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'teacher_1733133539.jpeg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, NULL, '2024-12-02 04:58:59', '2024-12-02 05:20:44', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6588,10 +6771,28 @@ ALTER TABLE `provinces`
   ADD UNIQUE KEY `provinces_slug_unique` (`slug`);
 
 --
--- Indexes for table `quizzes`
+-- Indexes for table `quiz`
 --
-ALTER TABLE `quizzes`
+ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quiz_faculty_id_foreign` (`faculty_id`),
+  ADD KEY `quiz_program_id_foreign` (`program_id`),
+  ADD KEY `quiz_session_id_foreign` (`session_id`),
+  ADD KEY `quiz_semester_id_foreign` (`semester_id`),
+  ADD KEY `quiz_section_id_foreign` (`section_id`);
+
+--
+-- Indexes for table `quiz_details`
+--
+ALTER TABLE `quiz_details`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quiz_questions_quiz_id_foreign` (`quiz_id`);
 
 --
 -- Indexes for table `result_contributions`
@@ -6974,7 +7175,7 @@ ALTER TABLE `class_rooms`
 -- AUTO_INCREMENT for table `class_routines`
 --
 ALTER TABLE `class_routines`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `complains`
@@ -7064,7 +7265,7 @@ ALTER TABLE `enquiry_sources`
 -- AUTO_INCREMENT for table `enroll_subjects`
 --
 ALTER TABLE `enroll_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -7310,7 +7511,7 @@ ALTER TABLE `meeting_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -7406,7 +7607,7 @@ ALTER TABLE `programs`
 -- AUTO_INCREMENT for table `program_semester_sections`
 --
 ALTER TABLE `program_semester_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -7415,10 +7616,22 @@ ALTER TABLE `provinces`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `quizzes`
+-- AUTO_INCREMENT for table `quiz`
 --
-ALTER TABLE `quizzes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `quiz`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `quiz_details`
+--
+ALTER TABLE `quiz_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `result_contributions`
@@ -7442,7 +7655,7 @@ ALTER TABLE `schedule_settings`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `semesters`
@@ -7496,7 +7709,7 @@ ALTER TABLE `status_types`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `student_assignments`
@@ -7514,7 +7727,7 @@ ALTER TABLE `student_attendances`
 -- AUTO_INCREMENT for table `student_enrolls`
 --
 ALTER TABLE `student_enrolls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `student_leaves`
@@ -7526,7 +7739,7 @@ ALTER TABLE `student_leaves`
 -- AUTO_INCREMENT for table `student_relatives`
 --
 ALTER TABLE `student_relatives`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `student_transfers`
@@ -7610,7 +7823,7 @@ ALTER TABLE `transport_vehicles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `visitors`
@@ -7920,6 +8133,22 @@ ALTER TABLE `program_session`
 ALTER TABLE `program_subject`
   ADD CONSTRAINT `program_subject_program_id_foreign` FOREIGN KEY (`program_id`) REFERENCES `programs` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `program_subject_subject_id_foreign` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quiz`
+--
+ALTER TABLE `quiz`
+  ADD CONSTRAINT `quiz_faculty_id_foreign` FOREIGN KEY (`faculty_id`) REFERENCES `faculties` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quiz_program_id_foreign` FOREIGN KEY (`program_id`) REFERENCES `programs` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quiz_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `sections` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quiz_semester_id_foreign` FOREIGN KEY (`semester_id`) REFERENCES `semesters` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quiz_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  ADD CONSTRAINT `quiz_questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `role_has_permissions`
