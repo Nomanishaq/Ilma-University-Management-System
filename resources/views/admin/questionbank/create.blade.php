@@ -435,7 +435,7 @@
             domainRow.innerHTML = `
                 <div class="form-group col-md-4">
                     <label for="clo_${questionIndex}" class="form-label">CLO<span>*</span></label>
-                    <select class="form-control" name="clo[${questionIndex}]" id="clo_${questionIndex}" required>
+                    <select class="form-control" name="clo[${questionIndex}]" id="clo_${questionIndex}" required multiple>
                         <option value="">Select</option>
                         <option value="CLO1">CLO1</option>
                         <option value="CLO2">CLO2</option>

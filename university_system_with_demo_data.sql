@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2024 at 07:41 AM
+-- Generation Time: Dec 03, 2024 at 08:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -3933,7 +3933,7 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id`, `title`, `created_at`, `updated_at`, `faculty_id`, `program_id`, `session_id`, `semester_id`, `section_id`, `teacher`, `exam_time`, `exam_type`, `quiz_type`, `subject_id`) VALUES
-(12, 'Software Engineering MID TERM EXAMINATIONS FALL 2024', '2024-12-02 18:48:04', '2024-12-02 19:35:51', 2, 10, 4, 1, 1, 'Super Admin', '40 Minutes', 'mid_term', NULL, 38);
+(12, 'Software Engineering MID TERM EXAMINATIONS FALL 2024', '2024-12-02 18:48:04', '2024-12-03 02:01:10', 2, 10, 4, 1, 1, 'Zahid Ali', '40 Minutes', 'mid_term', NULL, 38);
 
 -- --------------------------------------------------------
 
@@ -5224,7 +5224,10 @@ CREATE TABLE `student_attendances` (
 --
 
 INSERT INTO `student_attendances` (`id`, `student_enroll_id`, `subject_id`, `date`, `time`, `attendance`, `note`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(159, 19, 18, '2024-11-27', NULL, 1, '', 1, NULL, '2024-11-27 00:01:18', '2024-11-27 00:01:18');
+(159, 19, 18, '2024-11-27', NULL, 1, '', 1, NULL, '2024-11-27 00:01:18', '2024-11-27 00:01:18'),
+(160, 19, 18, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:04:12', '2024-12-03 02:04:12'),
+(161, 22, 18, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:04:12', '2024-12-03 02:04:12'),
+(162, 22, 16, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:05:33', '2024-12-03 02:05:33');
 
 -- --------------------------------------------------------
 
@@ -7721,7 +7724,7 @@ ALTER TABLE `student_assignments`
 -- AUTO_INCREMENT for table `student_attendances`
 --
 ALTER TABLE `student_attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT for table `student_enrolls`

@@ -40,6 +40,7 @@
                         </style>
                     </head>
                     <body>
+
                         ${content}
                     </body>
                 </html>
@@ -78,8 +79,24 @@
                 <img src="/uploads/setting/ilma_uni_1732311944.png" class="img-fluid w-25" alt="">
             </div>
 
-            <div class="col-12 text-center py-3">
+            <div class="col-12 text-center pt-3">
                 <h3 class="fs-5"> {{ $quiz->title }}</h3>
+            </div>
+            <div class="col-12">
+            <h4 class="fs-5 text-center">
+                    @if($quiz->exam_type == "quiz")
+                        Quiz
+                    @elseif($quiz->exam_type == "mid_term")
+                        Mid Term Examination
+                    @elseif($quiz->exam_type == "final_term")
+                    Final Term Examination
+                    @elseif($quiz->exam_type == "assignment")
+                    Assignment
+                    @elseif($quiz->exam_type == "class_participation")
+                    Class participation
+                    @endif
+
+                </b> </h4>
             </div>
 
             <div class="col-6">
@@ -104,6 +121,10 @@
             <div class="col-6 text-center">
                 <h4 class="fs-6">CAMPUS: <b>MAIN</b> </h4>
             </div>
+            <div class="col-6">
+                <h4 class="fs-6">Teacher: <b>{{ $quiz->teacher }}</b> </h4>
+            </div>
+
 
         </div>
 
