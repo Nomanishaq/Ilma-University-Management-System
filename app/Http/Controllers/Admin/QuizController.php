@@ -67,12 +67,12 @@ class QuizController extends Controller
             if ($questionData['question_type'] === 'quiz_base') {
                 $question->options = json_encode($questionData['options']);
             } // Store options as JSON
-            $question->clo = $questionData['domain']['clo'];
-            $question->plo = $questionData['domain']['plo'];
-            $question->total_marks = (int) $questionData['domain']['total_marks']; // Convert to integer
-            $question->cognitive = $questionData['domain']['cognitive'];
-            $question->psychomotor = $questionData['domain']['psychomotor'];
-            $question->affective = $questionData['domain']['affective'];
+            $question->clo = json_encode($questionData['domain']['clo']);
+            $question->plo = json_encode($questionData['domain']['plo']);
+            $question->cognitive = json_encode($questionData['domain']['cognitive']);
+            $question->psychomotor = json_encode($questionData['domain']['psychomotor']);
+            $question->affective = json_encode($questionData['domain']['affective']);
+            $question->total_marks = (int) $questionData['domain']['total_marks'];
 
             // Save the question
             $question->save();

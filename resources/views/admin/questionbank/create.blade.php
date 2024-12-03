@@ -193,7 +193,13 @@
                             </thead>
                             <tbody>
                                 @if($quizzes->questions)
+                                    @php 
+                                        $total_marks = 0;
+                                    @endphp
                                     @foreach ($quizzes->questions as $question)
+                                        @php 
+                                            $total_marks += $question->total_marks;
+                                        @endphp
                                         <tr>
                                             <td>{{ $question->id }}</td>
                                             <td>{{ $question->question }}</td>
@@ -347,7 +353,7 @@
 
         // Function to calculate the total marks from input fields
         function calculateTotalMarks() {
-            totalMarks = 0; // Reset total marks
+            totalMarks = {{ $total_marks }}; // Reset total marks
             document.querySelectorAll('input[name^="total_marks"]').forEach((input) => {
                 const value = parseFloat(input.value);
                 if (!isNaN(value)) {
@@ -366,6 +372,8 @@
             }
         }
 
+        calculateTotalMarks();
+
         // Function to update the remaining marks display
         function updateRemainingMarksDisplay() {
             jQuery('#remaining-marks').text('Remaining Marks: ' + remainingMarks);
@@ -374,7 +382,6 @@
         // Function to add a question dynamically
         function addQuestion(isQuizBase) {
             let qustion_type = jQuery('#qustion_type').val();
-
             if (qustion_type === "") {
                 alert("Please Select Question Type");
                 return;
@@ -435,7 +442,7 @@
             domainRow.innerHTML = `
                 <div class="form-group col-md-4">
                     <label for="clo_${questionIndex}" class="form-label">CLO<span>*</span></label>
-                    <select class="form-control" name="clo[${questionIndex}]" id="clo_${questionIndex}" required multiple>
+                    <select class="form-control" name="clo[${questionIndex}][]" id="clo_${questionIndex}" required multiple>
                         <option value="">Select</option>
                         <option value="CLO1">CLO1</option>
                         <option value="CLO2">CLO2</option>
@@ -456,7 +463,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="plo_${questionIndex}" class="form-label">PLO<span>*</span></label>
-                    <select class="form-control" name="plo[${questionIndex}]" id="plo_${questionIndex}" required>
+                    <select class="form-control" name="plo[${questionIndex}][]" id="plo_${questionIndex}" required multiple>
                         <option value="">Select</option>
                         <option value="PLO1">PLO1</option>
                         <option value="PLO2">PLO2</option>
@@ -477,7 +484,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="total_marks_${questionIndex}" class="form-label">Total Marks<span>*</span></label>
-                    <input type="text" class="form-control" name="total_marks[${questionIndex}]" id="total_marks_${questionIndex}" required>
+                    <input type="number" max="${remainingMarks}" class="form-control" name="total_marks[${questionIndex}]" id="total_marks_${questionIndex}" required>
                     <div class="invalid-feedback">
                         {{ __('required_field') }}
                     </div>
@@ -487,7 +494,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="cognitive_selection_${questionIndex}" class="form-label">Cognitive<span>*</span></label>
-                    <select name="cognitive_selection[${questionIndex}]" id="cognitive_selection_${questionIndex}" class="form-control" required>
+                    <select name="cognitive_selection[${questionIndex}][]" id="cognitive_selection_${questionIndex}" class="form-control" required multiple>
                         <option value="">Select Cognitive</option>
                         <option value="C1">C1</option>
                         <option value="C2">C2</option>
@@ -502,7 +509,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="psychomotor_selection_${questionIndex}" class="form-label">Psychomotor<span>*</span></label>
-                    <select name="psychomotor_selection[${questionIndex}]" id="psychomotor_selection_${questionIndex}" class="form-control" required>
+                    <select name="psychomotor_selection[${questionIndex}][]" id="psychomotor_selection_${questionIndex}" class="form-control" required multiple>
                         <option value="">Select Psychomotor</option>
                         <option value="P1">P1</option>
                         <option value="P2">P2</option>
@@ -518,7 +525,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="affective_selection_${questionIndex}" class="form-label">Affective<span>*</span></label>
-                    <select name="affective_selection[${questionIndex}]" id="affective_selection_${questionIndex}" class="form-control" required>
+                    <select name="affective_selection[${questionIndex}][]" id="affective_selection_${questionIndex}" class="form-control" required multiple>
                         <option value="">Select Affective</option>
                         <option value="A1">A1</option>
                         <option value="A2">A2</option>
@@ -602,15 +609,24 @@
 
         document.querySelectorAll('.question-row-2').forEach((row, index) => {
             const totalMarks = row.querySelector('input[name^="total_marks"]') ? row.querySelector('input[name^="total_marks"]').value : '';
-            const clo = row.querySelector('select[name^="clo"]') ? row.querySelector('select[name^="clo"]').value : '';
-            const plo = row.querySelector('select[name^="plo"]') ? row.querySelector('select[name^="plo"]').value : '';
-            const cognitive = row.querySelector('select[name^="cognitive_selection"]') ? row.querySelector('select[name^="cognitive_selection"]').value : '';
-            const psychomotor = row.querySelector('select[name^="psychomotor_selection"]') ? row.querySelector('select[name^="psychomotor_selection"]').value : '';
-            const affective = row.querySelector('select[name^="affective_selection"]') ? row.querySelector('select[name^="affective_selection"]').value : '';
+            
+            const cloSelect = row.querySelector('select[name^="clo"]');
+            const clo = cloSelect ? Array.from(cloSelect.selectedOptions).map(option => option.value).filter(value => value) : [];
 
+            const ploSelect = row.querySelector('select[name^="plo"]');
+            const plo = ploSelect ? Array.from(ploSelect.selectedOptions).map(option => option.value).filter(value => value) : [];
+            
+            const cognitiveSelect = row.querySelector('select[name^="cognitive_selection"]');
+            const cognitive = cognitiveSelect ? Array.from(cognitiveSelect.selectedOptions).map(option => option.value).filter(value => value) : [];
+
+            const psychomotorSelect = row.querySelector('select[name^="psychomotor_selection"]');
+            const psychomotor = psychomotorSelect ? Array.from(psychomotorSelect.selectedOptions).map(option => option.value).filter(value => value) : [];
+
+            const affectiveSelect = row.querySelector('select[name^="affective_selection"]');
+            const affective = affectiveSelect ? Array.from(affectiveSelect.selectedOptions).map(option => option.value).filter(value => value) : [];
 
             // Validation: Check if domain-related fields are not empty
-            if (!totalMarks || !clo || !plo || !cognitive || !psychomotor || !affective) {
+            if (!totalMarks || clo.length === 0 || plo.length === 0 || cognitive.length === 0 || psychomotor.length === 0 || affective.length === 0) {
                 isValid = false;
                 row.classList.add('error'); // Highlight the row with an error
                 alert('Please fill out all domain-related fields for question ' + (index + 1));
@@ -619,15 +635,16 @@
                 if (questions[index]) {
                     questions[index].domain = {
                         total_marks: totalMarks,
-                        clo,
-                        plo,
-                        cognitive,
-                        psychomotor,
-                        affective
+                        clo, // Array of selected CLOs
+                        plo, // Array of selected PLOs
+                        cognitive, // Array of selected cognitive levels
+                        psychomotor, // Array of selected psychomotor levels
+                        affective // Array of selected affective levels
                     };
                 }
             }
         });
+
 
         console.log(questions);
 
