@@ -8,51 +8,75 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script>
-        function printDiv(divId) {
-            // Get the div's HTML content
-            var content = document.getElementById(divId).innerHTML;
+     function printDiv(divId) {
+    // Get the div's HTML content
+    var content = document.getElementById(divId).innerHTML;
 
-            // Create a new window or frame
-            var printWindow = window.open('', '_blank');
+    // Create a new window or frame
+    var printWindow = window.open('', '_blank');
 
-            // Add styles and content to the new window
-            printWindow.document.open();
-            printWindow.document.write(`
-                <html>
-                    <head>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-                       
-                        <!-- Add any custom styles -->
-                        <style>
-                            body { font-family: Arial, sans-serif; margin: 20px; }
-                            .border-dark { border-color: #000 !important; }
-                            .border-3 { border-width: 3px !important; }
-                            .w-25 { width: 25% !important; }
-                            .fs-5 { font-size: 1.25rem !important; }
-                            .fs-6 { font-size: 1rem !important; }
-                            .text-center { text-align: center !important; }
-                            .text-end { text-align: end !important; }
-                            
-                        </style>
-                        <title>Print Preview</title>
-                        <style>
-                            body { font-family: Arial, sans-serif; margin: 20px; }
-                        </style>
-                    </head>
-                    <body>
+    // Add styles and content to the new window
+    printWindow.document.open();
+    printWindow.document.write(`
+        <html>
+            <head>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+                      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+                      crossorigin="anonymous">
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    .border-dark { border-color: #000 !important; }
+                    .border-3 { border-width: 3px !important; }
+                    .w-25 { width: 25% !important; }
+                    .fs-5 { font-size: 1.25rem !important; }
+                    .fs-6 { font-size: 1rem !important; }
+                    .text-center { text-align: center !important; }
+                    .text-end { text-align: end !important; }
+                </style>
+                <title>Print Preview</title>
+            </head>
+            <body>
+                ${content}
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
 
-                        ${content}
-                    </body>
-                </html>
-            `);
-            printWindow.document.close();
+    // Wait for the images to load before printing
+    printWindow.onload = function () {
+        const images = printWindow.document.images;
+        let loadedCount = 0;
 
-            // Trigger the print
-            printWindow.print();
+        // Check if all images are loaded
+        function checkImagesLoaded() {
+            loadedCount++;
+            if (loadedCount === images.length) {
+                // All images are loaded, now print
+                printWindow.print();
 
-            // Close the window after printing
-            printWindow.onafterprint = () => printWindow.close();
+                // Close the window after printing
+                printWindow.onafterprint = () => printWindow.close();
+            }
         }
+
+        if (images.length === 0) {
+            // No images, print immediately
+            printWindow.print();
+            printWindow.onafterprint = () => printWindow.close();
+        } else {
+            // Add load event listener to each image
+            for (let img of images) {
+                if (img.complete) {
+                    checkImagesLoaded();
+                } else {
+                    img.onload = checkImagesLoaded;
+                    img.onerror = checkImagesLoaded; // Handle broken images
+                }
+            }
+        }
+    };
+}
+
     </script>
     <style>
         p{
