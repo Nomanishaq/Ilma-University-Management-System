@@ -148,6 +148,18 @@
             <div class="col-6">
                 <h4 class="fs-6">Teacher: <b>{{ $quiz->teacher }}</b> </h4>
             </div>
+            @if($quiz->quiz_type)
+            <div class="col-6 text-center">
+                <h4 class="fs-6">Quiz Type: <b>
+                    @if($quiz->quiz_type == 'quiz_1')
+                    Quiz 1
+                    @elseif($quiz->quiz_type == 'quiz_2')
+                    Quiz 2
+                    @endif
+
+                </b> </h4>
+            </div>
+            @endif
 
 
         </div>

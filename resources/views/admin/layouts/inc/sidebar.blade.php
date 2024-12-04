@@ -106,9 +106,6 @@
                 </li>
                 @endcanany
 
-                @canany(['student-enroll-alumni'])
-                <li class="{{ Request::is('admin/student/student-alumni*') ? 'active' : '' }}"><a href="{{ route('admin.student-alumni.index') }}" class="">{{ trans_choice('module_student_alumni', 2) }}</a></li>
-                @endcanany
             </ul>
         </li>
         @endcanany
@@ -167,24 +164,6 @@
                 @can('class-routine-teacher')
                 <li class="{{ Request::is('admin/academic/class-routine-teacher') ? 'active' : '' }}"><a href="{{ route('admin.class-routine.teacher') }}" class="">{{ trans_choice('module_teacher_routine', 2) }}</a></li>
                 @endcan
-
-                @canany(['routine-setting-class', 'routine-setting-exam'])
-                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/academic/routine-setting*') ? 'pcoded-trigger active' : '' }}">
-                    <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">{{ trans_choice('module_setting', 2) }}</span>
-                    </a>
-
-                    <ul class="pcoded-submenu">
-                        @can('routine-setting-class')
-                        <li class="{{ Request::is('admin/academic/routine-setting/class*') ? 'active' : '' }}"><a href="{{ route('admin.routine-setting.class') }}" class="">{{ trans_choice('module_class_routine', 1) }}</a></li>
-                        @endcan
-
-                        @can('routine-setting-exam')
-                        <li class="{{ Request::is('admin/academic/routine-setting/exam*') ? 'active' : '' }}"><a href="{{ route('admin.routine-setting.exam') }}" class="">{{ trans_choice('module_exam_routine', 1) }}</a></li>
-                        @endcan
-                    </ul>
-                </li>
-                @endcanany
             </ul>
         </li>
         @endcanany
@@ -348,13 +327,6 @@
                         <li class="{{ Request::is('admin/staff-daily-report*') ? 'active' : '' }}"><a href="{{ route('admin.staff-daily-attendance.report') }}" class="">{{ trans_choice('module_staff_daily_report', 2) }}</a></li>
                         @endcan
 
-                        @can('staff-hourly-attendance-action')
-                        <li class="{{ Request::is('admin/staff-hourly-attendance*') ? 'active' : '' }}"><a href="{{ route('admin.staff-hourly-attendance.index') }}" class="">{{ trans_choice('module_staff_hourly_attendance', 2) }}</a></li>
-                        @endcan
-
-                        @can('staff-hourly-attendance-report')
-                        <li class="{{ Request::is('admin/staff-hourly-report*') ? 'active' : '' }}"><a href="{{ route('admin.staff-hourly-attendance.report') }}" class="">{{ trans_choice('module_staff_hourly_report', 2) }}</a></li>
-                        @endcan
                     </ul>
                 </li>
                 @endcanany
@@ -387,23 +359,6 @@
                 <li class="{{ Request::is('admin/staff/department*') ? 'active' : '' }}"><a href="{{ route('admin.department.index') }}" class="">{{ trans_choice('module_department', 2) }}</a></li>
                 @endcanany
 
-                @canany(['tax-setting-create', 'tax-setting-view', 'pay-slip-setting-view'])
-                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/staff/tax-setting*') ? 'pcoded-trigger active' : '' }} {{ Request::is('admin/staff/pay-slip-setting*') ? 'pcoded-trigger active' : '' }}">
-                    <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">{{ trans_choice('module_setting', 2) }}</span>
-                    </a>
-
-                    <ul class="pcoded-submenu">
-                        @canany(['tax-setting-create', 'tax-setting-view'])
-                        <li class="{{ Request::is('admin/staff/tax-setting*') ? 'active' : '' }}"><a href="{{ route('admin.tax-setting.index') }}" class="">{{ trans_choice('module_tax_setting', 2) }}</a></li>
-                        @endcanany
-
-                        @can('pay-slip-setting-view')
-                        <li class="{{ Request::is('admin/staff/pay-slip-setting*') ? 'active' : '' }}"><a href="{{ route('admin.pay-slip-setting.index') }}" class="">{{ trans_choice('module_pay_slip_setting', 1) }}</a></li>
-                        @endcan
-                    </ul>
-                </li>
-                @endcanany
             </ul>
         </li>
         @endcanany
@@ -416,13 +371,6 @@
                 <span class="pcoded-mtext">{{ trans_choice('module_communicate', 2) }}</span>
             </a>
             <ul class="pcoded-submenu">
-                @canany(['email-notify-create', 'email-notify-view'])
-                <li class="{{ Request::is('admin/communicate/email-notify*') ? 'active' : '' }}"><a href="{{ route('admin.email-notify.index') }}" class="">{{ trans_choice('module_email_notify', 2) }}</a></li>
-                @endcanany
-
-                @canany(['sms-notify-create', 'sms-notify-view'])
-                <li class="{{ Request::is('admin/communicate/sms-notify*') ? 'active' : '' }}"><a href="{{ route('admin.sms-notify.index') }}" class="">{{ trans_choice('module_sms_notify', 2) }}</a></li>
-                @endcanany
 
                 @canany(['event-create', 'event-view'])
                 <li class="{{ Request::is('admin/communicate/event') ? 'active' : '' }}"><a href="{{ route('admin.event.index') }}" class="">{{ trans_choice('module_event', 2) }} {{ __('list') }}</a></li>
@@ -442,9 +390,6 @@
             </ul>
         </li>
         @endcanany
-
-
-
 
         @canany(['marksheet-view', 'marksheet-print', 'marksheet-download', 'marksheet-setting-view', 'certificate-view', 'certificate-create', 'certificate-print', 'certificate-download', 'certificate-template-view', 'certificate-template-create'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/transcript*') ? 'pcoded-trigger active' : '' }}">
@@ -491,37 +436,10 @@
                 <li class="{{ Request::is('admin/report/subject') ? 'active' : '' }}"><a href="{{ route('admin.report.subject') }}" class="">{{ trans_choice('module_course_students', 1) }}</a></li>
                 @endcan
 
-                @can('report-fees')
-                <li class="{{ Request::is('admin/report/fees') ? 'active' : '' }}"><a href="{{ route('admin.report.fees') }}" class="">{{ trans_choice('module_collected_fees', 1) }}</a></li>
-                @endcan
-
-                @can('report-payroll')
-                <li class="{{ Request::is('admin/report/payroll') ? 'active' : '' }}"><a href="{{ route('admin.report.payroll') }}" class="">{{ trans_choice('module_salary_paid', 1) }}</a></li>
-                @endcan
-
                 @can('report-leave')
                 <li class="{{ Request::is('admin/report/leave') ? 'active' : '' }}"><a href="{{ route('admin.report.leave') }}" class="">{{ trans_choice('module_staff_leaves', 1) }}</a></li>
                 @endcan
 
-                @can('report-income')
-                <li class="{{ Request::is('admin/report/income') ? 'active' : '' }}"><a href="{{ route('admin.report.income') }}" class="">{{ trans_choice('module_total_income', 1) }}</a></li>
-                @endcan
-
-                @can('report-expense')
-                <li class="{{ Request::is('admin/report/expense') ? 'active' : '' }}"><a href="{{ route('admin.report.expense') }}" class="">{{ trans_choice('module_total_expense', 1) }}</a></li>
-                @endcan
-
-                @can('report-library')
-                <li class="{{ Request::is('admin/report/library') ? 'active' : '' }}"><a href="{{ route('admin.report.library') }}" class="">{{ trans_choice('module_library_history', 1) }}</a></li>
-                @endcan
-
-                @can('report-hostel')
-                <li class="{{ Request::is('admin/report/hostel') ? 'active' : '' }}"><a href="{{ route('admin.report.hostel') }}" class="">{{ trans_choice('module_hostel_members', 1) }}</a></li>
-                @endcan
-
-                @can('report-transport')
-                <li class="{{ Request::is('admin/report/transport') ? 'active' : '' }}"><a href="{{ route('admin.report.transport') }}" class="">{{ trans_choice('module_transport_members', 1) }}</a></li>
-                @endcan
             </ul>
         </li>
         @endcanany
@@ -545,63 +463,11 @@
                 <li class="{{ Request::is('admin/setting/district*') ? 'active' : '' }}"><a href="{{ route('admin.district.index') }}" class="">{{ trans_choice('module_district', 2) }}</a></li>
                 @endcanany
                 
-                @canany(['language-view', 'language-create'])
-                <li class="{{ Request::is('admin/setting/language*') ? 'active' : '' }}"><a href="{{ route('admin.language.index') }}" class="">{{ trans_choice('module_language', 2) }}</a></li>
-                @endcanany
-                
-                @canany(['translations-view', 'translations-create'])
-                <li class="{{ Request::is('admin/translations*') ? 'active' : '' }}"><a href="{{ route('admin.translations.index') }}" class="">{{ trans_choice('module_translate', 2) }}</a></li>
-                @endcanany
-
-                @can('mail-setting-view')
-                <li class="{{ Request::is('admin/setting/mail-setting*') ? 'active' : '' }}"><a href="{{ route('admin.mail-setting.index') }}" class="">{{ trans_choice('module_mail_setting', 1) }}</a></li>
-                @endcan
-
-                @can('sms-setting-view')
-                <li class="{{ Request::is('admin/setting/sms-setting*') ? 'active' : '' }}"><a href="{{ route('admin.sms-setting.index') }}" class="">{{ trans_choice('module_sms_setting', 1) }}</a></li>
-                @endcan
-
-                @can('application-setting-view')
-                <li class="{{ Request::is('admin/setting/application-setting*') ? 'active' : '' }}"><a href="{{ route('admin.application-setting.index') }}" class="">{{ trans_choice('module_application_setting', 1) }}</a></li>
-                @endcan
-
-                {{-- @can('schedule-setting-view')
-                <li class="{{ Request::is('admin/setting/schedule-setting*') ? 'active' : '' }}"><a href="{{ route('admin.schedule-setting.index') }}" class="">{{ trans_choice('module_schedule_setting', 1) }}</a></li>
-                @endcan --}}
-
-                {{-- @can('bulk-import-export-view')
-                <li class="{{ Request::is('admin/setting/bulk-import-export*') ? 'active' : '' }}"><a href="{{ route('admin.bulk.import-export') }}" class="">{{ trans_choice('module_bulk_import_export', 1) }}</a></li>
-                @endcan --}}
-
                 @canany(['role-view', 'role-edit'])
                 <li class="{{ Request::is('admin/setting/role*') ? 'active' : '' }}"><a href="{{ route('admin.role.index') }}" class="">{{ trans_choice('module_role', 2) }}</a></li>
                 @endcanany
 
-                @canany(['field-staff', 'field-student', 'field-application'])
-                <li class="nav-item pcoded-hasmenu {{ Request::is('admin/setting/field*') ? 'pcoded-trigger active' : '' }}">
-                    <a href="#!" class="nav-link">
-                        <span class="pcoded-mtext">{{ trans_choice('module_field_setting', 2) }}</span>
-                    </a>
-
-                    <ul class="pcoded-submenu">
-                        @canany(['field-staff'])
-                        <li class="{{ Request::is('admin/setting/field-user*') ? 'active' : '' }}"><a href="{{ route('admin.field.user') }}" class="">{{ trans_choice('module_staff', 2) }}</a></li>
-                        @endcan
-
-                        @canany(['field-student'])
-                        <li class="{{ Request::is('admin/setting/field-student*') ? 'active' : '' }}"><a href="{{ route('admin.field.student') }}" class="">{{ trans_choice('module_student', 2) }}</a></li>
-                        @endcan
-
-                        @canany(['field-application'])
-                        <li class="{{ Request::is('admin/setting/field-application*') ? 'active' : '' }}"><a href="{{ route('admin.field.application') }}" class="">{{ trans_choice('module_application', 2) }}</a></li>
-                        @endcan
-                    </ul>
-                </li>
-                @endcanany
-
-                @canany(['student-panel-view'])
-                <li class="{{ Request::is('admin/setting/student-panel*') ? 'active' : '' }}"><a href="{{ route('admin.student.panel') }}" class="">{{ trans_choice('module_student_panel', 2) }}</a></li>
-                @endcanany
+               
             </ul>
         </li>
         @endcanany

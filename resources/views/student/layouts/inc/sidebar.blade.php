@@ -96,14 +96,7 @@
         </li>
         @endif
 
-        @if(panel('panel_download')->status == 1)
-        <li class="nav-item {{ Request::is('student/download*') ? 'active' : '' }}">
-            <a href="{{ route('student.download.index') }}" class="nav-link">
-                <span class="pcoded-micon"><i class="fas fa-download"></i></span>
-                <span class="pcoded-mtext">{{ trans_choice('module_download', 2) }}</span>
-            </a>
-        </li>
-        @endif
+       
 
         @if(panel('panel_transcript')->status == 1)
         <li class="nav-item {{ Request::is('student/transcript*') ? 'active' : '' }}">

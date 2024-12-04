@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2024 at 08:06 AM
+-- Generation Time: Dec 04, 2024 at 10:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -441,8 +441,8 @@ CREATE TABLE `certificate_templates` (
 --
 
 INSERT INTO `certificate_templates` (`id`, `title`, `header_left`, `header_center`, `header_right`, `body`, `footer_left`, `footer_center`, `footer_right`, `logo_left`, `logo_right`, `background`, `width`, `height`, `student_photo`, `barcode`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Provisional Certificate', NULL, NULL, NULL, 'This is to certify that  [first_name] [last_name] son / daughter of  [father_name] and [mother_name] passed [program] degree under [faculty] examination of the university held in [ending_year]. And that he/she was placed [cgpa] with grade of [grade]. \r\n\r\nHe/She completed the course of  [credits] credits and all of the requirements for the award of the Bachelor\'s degree.', 'Controller', 'Director', 'Register', 'logo_1664614758.jpg', NULL, 'background-border_1664614748.png', '800px', 'auto', 1, 1, 1, '2022-10-01 02:56:19', '2022-10-02 16:11:17'),
-(2, 'Transfer Certificate', NULL, NULL, NULL, 'This is to certify that  [first_name] [last_name] son / daughter of  [father_name] and [mother_name] passed [program] degree under [faculty] examination of the university held in [ending_year]. And that he/she was placed [cgpa] with grade of [grade]. \r\n\r\nHe/She completed the course of  [credits] credits and all of the requirements for the award of the Bachelor\'s degree.', 'Controller', 'Director', 'Register', 'logo_1664614963.jpg', NULL, 'background-border_1664614963.png', '800px', 'auto', 1, 0, 1, '2022-10-01 03:02:43', '2022-10-02 16:11:27');
+(1, 'Provisional Certificate', NULL, NULL, NULL, 'This is to certify that  [first_name] [last_name] son / daughter of  [father_name] and [mother_name] passed [program] degree under [faculty] examination of the university held in [ending_year]. And that he/she was placed [cgpa] with grade of [grade]. \r\n\r\nHe/She completed the course of  [credits] credits and all of the requirements for the award of the Bachelor\'s degree.', 'Controller', 'Director', 'Register', 'logo_wide__1__removebg_preview_1733339865.png', NULL, 'logo_wide__1__removebg_preview_1733339865.png', '800px', 'auto', 1, 0, 1, '2022-10-01 02:56:19', '2024-12-04 14:20:32'),
+(2, 'Transfer Certificate', NULL, NULL, NULL, 'This is to certify that  [first_name] [last_name] son / daughter of  [father_name] and [mother_name] passed [program] degree under [faculty] examination of the university held in [ending_year]. And that he/she was placed [cgpa] with grade of [grade]. \r\n\r\nHe/She completed the course of  [credits] credits and all of the requirements for the award of the Bachelor\'s degree.', 'Controller', 'Director', 'Register', 'logo_wide__1__removebg_preview_1733339886.png', NULL, 'logo_wide__1__removebg_preview_1733339886.png', '800px', 'auto', 1, 0, 1, '2022-10-01 03:02:43', '2024-12-04 14:18:06');
 
 -- --------------------------------------------------------
 
@@ -1089,8 +1089,6 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `title`, `start_date`, `end_date`, `color`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Eid Holiday', '2023-10-03', '2023-10-17', '#70c24a', 1, '2022-10-03 11:38:23', '2023-08-25 06:38:31'),
-(2, 'Marry Crismach', '2023-11-03', '2023-11-10', '#4a5cc2', 1, '2022-10-03 11:39:06', '2023-08-25 06:38:21'),
-(3, 'Durga Puja', '2023-10-27', '2023-11-01', '#c24a4e', 1, '2022-10-03 11:39:24', '2023-08-25 06:38:11'),
 (4, 'Final Exam', '2023-11-23', '2023-12-03', '#c2b44a', 1, '2022-10-03 11:39:54', '2023-08-25 06:38:02'),
 (5, 'Summer Vacation', '2023-11-22', '2023-12-06', '#4aaec2', 1, '2022-10-03 11:41:19', '2023-08-25 06:37:52'),
 (6, 'New Year Vacation', '2023-12-24', '2024-01-08', '#c24ac2', 1, '2022-10-03 11:41:57', '2023-08-25 06:37:42');
@@ -1154,7 +1152,9 @@ CREATE TABLE `exam_routines` (
 --
 
 INSERT INTO `exam_routines` (`id`, `exam_type_id`, `session_id`, `program_id`, `semester_id`, `section_id`, `subject_id`, `date`, `start_time`, `end_time`, `status`, `created_at`, `updated_at`) VALUES
-(22, 2, 4, 10, 1, 1, 18, '2024-11-28', '19:10:00', '20:15:00', 1, '2024-11-28 09:00:56', '2024-11-28 09:00:56');
+(22, 2, 4, 10, 1, 1, 18, '2024-11-28', '19:10:00', '20:15:00', 1, '2024-11-28 09:00:56', '2024-11-28 09:00:56'),
+(23, 1, 4, 10, 1, 1, 19, '2024-12-03', '17:04:00', '18:05:00', 1, '2024-12-03 06:05:09', '2024-12-03 06:05:09'),
+(24, 1, 4, 11, 1, 1, 24, '2024-12-03', '16:06:00', '18:06:00', 1, '2024-12-03 06:06:28', '2024-12-03 06:06:28');
 
 -- --------------------------------------------------------
 
@@ -1172,7 +1172,9 @@ CREATE TABLE `exam_routine_room` (
 --
 
 INSERT INTO `exam_routine_room` (`exam_routine_id`, `room_id`) VALUES
-(22, 5);
+(22, 5),
+(23, 5),
+(24, 5);
 
 -- --------------------------------------------------------
 
@@ -1190,7 +1192,9 @@ CREATE TABLE `exam_routine_user` (
 --
 
 INSERT INTO `exam_routine_user` (`exam_routine_id`, `user_id`) VALUES
-(22, 10);
+(22, 10),
+(23, 11),
+(24, 11);
 
 -- --------------------------------------------------------
 
@@ -1699,7 +1703,7 @@ INSERT INTO `fields` (`id`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (65, 'panel_library', 0, NULL, '2024-11-26 20:36:10'),
 (66, 'panel_notice', 1, NULL, NULL),
 (67, 'panel_assignment', 1, NULL, NULL),
-(68, 'panel_download', 0, NULL, '2024-11-26 20:36:32'),
+(68, 'panel_download', 1, NULL, '2024-12-04 14:46:03'),
 (69, 'panel_transcript', 0, NULL, '2024-11-26 20:37:02'),
 (70, 'panel_profile', 1, NULL, NULL);
 
@@ -2379,7 +2383,7 @@ CREATE TABLE `marksheet_settings` (
 --
 
 INSERT INTO `marksheet_settings` (`id`, `title`, `header_left`, `header_center`, `header_right`, `body`, `footer_left`, `footer_center`, `footer_right`, `logo_left`, `logo_right`, `background`, `width`, `height`, `student_photo`, `barcode`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Our University Academic Transcript', NULL, NULL, NULL, NULL, 'Controller', 'Director', 'Register', 'logo_1664613886.jpg', 'logo_1664613886.jpg', NULL, '800px', 'auto', 0, 0, 1, '2022-10-01 02:44:46', '2022-10-01 03:27:49');
+(1, 'Ilma University Academic Transcript', NULL, NULL, NULL, NULL, 'Controller', 'Director', 'Register', 'logo_wide__1__removebg_preview_1733338985.png', 'logo_wide__1__removebg_preview_1733338986.png', NULL, '800px', 'auto', 0, 0, 1, '2022-10-01 02:44:46', '2024-12-04 14:03:18');
 
 -- --------------------------------------------------------
 
@@ -2697,6 +2701,13 @@ CREATE TABLE `notes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notes`
+--
+
+INSERT INTO `notes` (`id`, `noteable_type`, `noteable_id`, `title`, `description`, `attach`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(9, 'App\\User', 11, 'test', 'test', NULL, 1, 1, NULL, '2024-12-04 12:33:32', '2024-12-04 12:33:32');
 
 -- --------------------------------------------------------
 
@@ -3933,7 +3944,8 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id`, `title`, `created_at`, `updated_at`, `faculty_id`, `program_id`, `session_id`, `semester_id`, `section_id`, `teacher`, `exam_time`, `exam_type`, `quiz_type`, `subject_id`) VALUES
-(12, 'Software Engineering MID TERM EXAMINATIONS FALL 2024', '2024-12-02 18:48:04', '2024-12-03 02:01:10', 2, 10, 4, 1, 1, 'Zahid Ali', '40 Minutes', 'mid_term', NULL, 38);
+(12, 'Software Engineering MID TERM EXAMINATIONS FALL 2024', '2024-12-02 18:48:04', '2024-12-03 02:01:10', 2, 10, 4, 1, 1, 'Zahid Ali', '40 Minutes', 'mid_term', NULL, 38),
+(14, 'test', '2024-12-03 16:07:08', '2024-12-03 16:07:35', 2, 10, 4, 1, 1, 'Super Admin', '40 Minutes', 'quiz', 'quiz_1', 48);
 
 -- --------------------------------------------------------
 
@@ -3986,9 +3998,9 @@ CREATE TABLE `quiz_questions` (
 
 INSERT INTO `quiz_questions` (`id`, `quiz_id`, `question_type`, `question`, `options`, `clo`, `plo`, `total_marks`, `cognitive`, `psychomotor`, `affective`, `created_at`, `updated_at`) VALUES
 (16, 12, 'question_base', 'Describe the costs and benefits of formal methods', NULL, 'CLO2', 'PLO3', 5, 'C2', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
-(17, 12, 'question_base', 'Construct formal models of sequential software systems', NULL, 'CLO3', 'PLO8', 5, 'C3', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
 (18, 12, 'question_base', 'Implement sequential software systems based on formal models', NULL, 'CLO7', 'PLO9', 5, 'C3', 'P2', 'A2', '2024-12-02 18:51:30', '2024-12-02 18:51:30'),
-(20, 12, 'quiz_base', 'Describe the costs and benefits of formal methods', '{\"option_a\":\"option 1\",\"option_b\":\"option 2\",\"option_c\":\"option 3\",\"option_d\":\"option 4\"}', 'CLO10', 'PLO8', 5, 'C3', 'P2', 'A2', '2024-12-02 19:14:35', '2024-12-02 19:14:35');
+(20, 12, 'quiz_base', 'Describe the costs and benefits of formal methods', '{\"option_a\":\"option 1\",\"option_b\":\"option 2\",\"option_c\":\"option 3\",\"option_d\":\"option 4\"}', 'CLO10', 'PLO8', 5, 'C3', 'P2', 'A2', '2024-12-02 19:14:35', '2024-12-02 19:14:35'),
+(23, 12, 'question_base', 'html stand for', NULL, '[\"CLO1\",\"CLO2\"]', '[\"PLO1\",\"PLO2\",\"PLO3\"]', 5, '[\"C2\",\"C3\"]', '[\"P1\",\"P2\"]', '[\"A1\",\"A2\"]', '2024-12-03 16:05:32', '2024-12-03 16:05:32');
 
 -- --------------------------------------------------------
 
@@ -5225,8 +5237,8 @@ CREATE TABLE `student_attendances` (
 
 INSERT INTO `student_attendances` (`id`, `student_enroll_id`, `subject_id`, `date`, `time`, `attendance`, `note`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (159, 19, 18, '2024-11-27', NULL, 1, '', 1, NULL, '2024-11-27 00:01:18', '2024-11-27 00:01:18'),
-(160, 19, 18, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:04:12', '2024-12-03 02:04:12'),
-(161, 22, 18, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:04:12', '2024-12-03 02:04:12'),
+(160, 19, 18, '2024-12-03', NULL, 1, '', 1, NULL, '2024-12-03 02:04:12', '2024-12-03 06:19:07'),
+(161, 22, 18, '2024-12-03', NULL, 1, '', 1, NULL, '2024-12-03 02:04:12', '2024-12-03 06:19:07'),
 (162, 22, 16, '2024-12-03', NULL, 1, '', 11, NULL, '2024-12-03 02:05:33', '2024-12-03 02:05:33');
 
 -- --------------------------------------------------------
@@ -5530,10 +5542,7 @@ CREATE TABLE `tax_settings` (
 --
 
 INSERT INTO `tax_settings` (`id`, `min_amount`, `max_amount`, `percentange`, `max_no_taxable_amount`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0.00, 5000.00, 0.00, 0.00, 1, NULL, NULL),
-(2, 5001.00, 10000.00, 5.00, 5000.00, 1, NULL, NULL),
-(3, 10001.00, 20000.00, 10.00, 5000.00, 1, NULL, '2022-10-01 05:22:30'),
-(4, 20001.00, 50000.00, 15.00, 5000.00, 1, NULL, NULL);
+(1, 0.00, 5000.00, 0.00, 0.00, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5855,7 +5864,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `staff_id`, `department_id`, `designation_id`, `first_name`, `last_name`, `father_name`, `mother_name`, `email`, `email_verified_at`, `password`, `password_text`, `gender`, `dob`, `joining_date`, `ending_date`, `phone`, `emergency_phone`, `mother_tongue`, `marital_status`, `blood_group`, `nationality`, `national_id`, `passport_no`, `present_province`, `present_district`, `present_village`, `present_address`, `permanent_province`, `permanent_district`, `permanent_village`, `permanent_address`, `education_level`, `graduation_academy`, `year_of_graduation`, `graduation_field`, `experience`, `note`, `basic_salary`, `contract_type`, `work_shift`, `salary_type`, `bank_account_name`, `bank_account_no`, `bank_name`, `ifsc_code`, `bank_brach`, `tin_no`, `photo`, `signature`, `resume`, `joining_letter`, `is_admin`, `login`, `status`, `remember_token`, `created_by`, `updated_by`, `created_at`, `updated_at`, `religion`, `caste`, `country`, `epf_no`) VALUES
-(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'pvDzclRnLmwUUryVN4lgMeDfPDlvCLQJoRmVVg6cesT1Z4BFuT4H7zacnjkJ', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
+(1, '1001', 1, 2, 'Super', 'Admin', 'ABC', 'XYZ', 'admin@mail.com', NULL, '$2y$10$YOPPO9lw4sK9mo0vGtW6eOFQ.w0CjCrOmD4ECnWlxfBDkSzkwbmkS', 'eyJpdiI6IjBwcDEvd1NwTmVrTC9aZGhVNjFsYUE9PSIsInZhbHVlIjoic0FrTit4RVNzQSsxVE1sMGFFZmphZz09IiwibWFjIjoiMmZiODE4YTJiNzZkNDA1NGYyN2M1YzJlMWI2MGFiZWMwZjBmNzQ2MWJhOGM2NWZhNzQ2M2YxNDllZDk5ZWY5YSIsInRhZyI6IiJ9', 1, '2006-01-01', '2018-10-02', NULL, '0123456789', NULL, NULL, 2, 1, NULL, NULL, NULL, 0, 0, NULL, NULL, 0, 0, NULL, NULL, 'Minima voluptatem f', 'Ilma University', '2001', 'Computer Science', '10 year Experience in Management', 'Distinctio Esse do', 50000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 'Lwsbw7M7xbXWl7EcKPq9r1N6xcBO5wsqFSiF2v1maUpe5DIQ7qgqb6UGMwCp', NULL, 1, '2022-09-30 12:00:46', '2024-11-26 10:13:44', NULL, NULL, NULL, NULL),
 (10, '110', 5, 3, 'Adnan', 'kaim khani', NULL, NULL, 'adnankaimkhani@mail.com', NULL, '$2y$10$xr6Mnce7WMM5EomgB1x2mOtYIZYZkPi8.MCnWqR.hLU/.KxFp2stq', 'eyJpdiI6IkJsTXJuSU5YbWwvL2ZLOFBIYksvdEE9PSIsInZhbHVlIjoiOVJYUCtJd3dmQUVNTVM0Q3U5bDg3TGxOdk5tenQvaWFmdXp6S3pRWVRHTT0iLCJtYWMiOiI2MGNiZGI2YmRjNDcxYWE2MWFmY2FiMzVkMDFhODJkOTg3NDA3MWZiZjhiNDdkMmM5NjUzOGEyNjhlNTUzNjI3IiwidGFnIjoiIn0=', 1, '1986-10-15', '2020-10-31', NULL, '03000000000', NULL, NULL, 1, 7, NULL, '4230171983973', NULL, 4, 4, NULL, NULL, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, '5 Year Experience', NULL, 150000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'teacher_1733132991.jpeg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, 1, '2024-11-25 19:21:34', '2024-12-02 05:22:39', NULL, NULL, NULL, NULL),
 (11, '1002', 5, 3, 'Zahid', 'Ali', NULL, NULL, 'zahidali@mail.com', NULL, '$2y$10$QThH6McZpO3UAPMXRvTR/umyVqkE9.FuWHtFg/GzmifJIjpZcmTg.', 'eyJpdiI6IlpaQ2NPQjQ2WWZycWRabmJ1L1BiZ3c9PSIsInZhbHVlIjoiNUMyajFDVzl0eEtybkppMVF0TmdxZz09IiwibWFjIjoiYTZlZjkyYTg4ZDYzMGM3NjA4MzM3YzMxYjFkYzI2M2I4NGY1OWFiNGM4MjAyY2ZhOGEzYjBmMjZiNmVlZmU3OSIsInRhZyI6IiJ9', 1, '1988-12-14', NULL, NULL, '03000000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 4, NULL, NULL, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 120000.00, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'teacher_1733133539.jpeg', NULL, NULL, NULL, 0, 1, 1, NULL, 1, NULL, '2024-12-02 04:58:59', '2024-12-02 05:20:44', NULL, NULL, NULL, NULL);
 
@@ -7286,7 +7295,7 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `exam_routines`
 --
 ALTER TABLE `exam_routines`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `exam_types`
@@ -7526,7 +7535,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `notices`
@@ -7622,7 +7631,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `quiz_details`
@@ -7634,7 +7643,7 @@ ALTER TABLE `quiz_details`
 -- AUTO_INCREMENT for table `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `result_contributions`
